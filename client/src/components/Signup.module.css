@@ -1,0 +1,89 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --theme :#8e42ec;
+}
+
+.mainWrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title{
+    font-size: 26px;
+    font-weight: 500;
+    position: relative;
+    top:-6vh;
+}
+.title span{
+    color: #8e42ec;
+    
+}
+
+.subTitle{
+    font-size: 17px;
+    font-weight: 600;
+    color: gray;
+    position: relative;
+    top:-6vh;
+}
+.formWrapper{
+    display: flex;
+    width: 50vw;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top:-5vh;
+}
+
+
+.formTopWrap{
+    display: flex;
+    width: 50vw;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 2rem 0rem;
+}
+
+.formbtmWrap{
+    display: flex;
+    width: 50vw;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 2rem 0rem;
+}
+
+.formSubmitBtn{
+    width: 10vw;
+    height: 5vh;
+    font-size: 17px;
+    font-weight: 500;
+    background-color: #8e42ec;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 8px 8px 32px 4px #c99fff;
+    position: relative;
+    left: 40%;
+    margin: 5% 0%;
+}
+
+.signInlink{
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(77, 77, 77);
+    position: relative;
+    top:-6vh;
+}
+
+.signInlink span{
+    color: #8e42ec;
+    cursor: pointer;
+}

@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.cardWrapper{
+    width: 22vw;
+    height: 64vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid rgb(168, 168, 168);
+    padding: 0vw 2vw;
+    border-radius: 16px;
+    box-shadow: 4px 4px 32px rgb(220, 220, 220);
+    background-color: white;
+
+}
+.cardImg{
+    border-radius: 100px;
+}
+
+.cardTestimonial{
+    text-align: center;
+    font-size: 17px;
+    color: rgb(96, 96, 96);
+}
+
+.cardName{
+    font-size: 18px;
+    font-weight: 600;
+    color: #181818;
+}

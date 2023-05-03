@@ -41,6 +41,10 @@
     background-color: var(--brand-color);
     color: white;
     font-weight: 500;
+    transition: all 0.25s ease-out;
+}
+.signUpBtn:hover{
+    transform: scale(0.95);
 }
 .signUp{
     width: 20vw;
@@ -94,6 +98,12 @@
     position: relative;
     left: 13%;
     top: 20%;
+    font-weight: bold;
+    box-shadow: 4px 4px 32px #a77be6;
+    transition: all 0.3s ease-out;
+}
+.heroCTA:hover{
+    transform: scale(0.95);
 }
 
 .heroRightContent{
@@ -102,8 +112,8 @@
 }
 .heroBgPoly{
     position: absolute;
-    top: 12vh;
-    right: 8vw;
+    top: 7vh;
+    right: 7vw;
     z-index: -1;
 }
 
@@ -113,7 +123,243 @@
     position: absolute;
     top: 27vh;
     right: 12vw;
-    box-shadow: 2px 2px 16px #cbaeec;
+    box-shadow: 2px 2px 32px #dec2ff;
 }
 /* 
 Hero section done */
+
+
+.featuresContainer{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10% 0% 10%;
+    margin: 6vh 0vw;
+    position: relative;
+}
+.featTitle{
+    font-size: 36px;
+    font-weight: 600;
+    color: #181818;
+    margin-bottom: 5vh;
+}
+
+.featuresGrid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    justify-items: center; /* Center items horizontally in the grid */
+    align-items: center; /* Center items vertically in the grid */
+    grid-row-gap: 4rem; /* Spacing between rows */
+    column-gap: 8vw;
+    position: relative;
+}
+
+.featbanner{
+    position: relative;
+    align-self: center;
+    top:5vh;
+    margin: 8vh 0vh;
+}
+.feat1Img{
+    position: absolute;
+    left:15%;
+    top: 10%;
+    box-shadow: 4px 4px 16px  #d2baf1;
+    border-radius: 16px;
+}
+
+.feat2Img{
+    position: absolute;
+    left:15%;
+    top: 10%;
+    box-shadow: 4px 4px 16px  #d2baf1;
+    border-radius: 16px;
+}
+.feat3Img{
+    position: absolute;
+    left:30%;
+    top: 10%;
+    box-shadow: 4px 4px 16px  #bad2f1;
+    border-radius: 16px;
+}
+.feat4Img{
+    position: absolute;
+    left:20%;
+    top: 20%;
+    box-shadow: 4px 4px 32px  #d2baf1;
+    border-radius: 16px;
+}
+.feat5Img{
+    position: absolute;
+    left:8%;
+    top: 20%;
+    box-shadow: 4px 4px 16px  #857897;
+    border-radius: 16px;
+}
+
+/* end of the features style */
+.testimonialsContainer{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10vh 0vw;
+}
+
+.testLegend{
+    font-size: 36px;
+    font-weight: 600;
+    width: 50vw;
+    text-align: center;
+    margin: 5vh 0vh;
+}
+
+.newsLetterContainer{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5% 0%;
+    position: relative;
+}
+.newsLetterContainer .nltitle{
+    width: 48vw;
+    font-size: 38px;
+    font-weight: 700;
+    color: #181818;
+    text-align: center;
+    position: relative;
+    top: -20%;
+}
+.nlsubtitle{
+    font-size: 20px;
+    font-weight: 500;
+    color:#7D7A7A;
+    position: relative;
+    top: -15%;
+}
+.nlInput{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.nlInput input{
+    width: 50vw;
+    height: 6vh;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 32px;
+    position: absolute;
+    padding-left: 2rem;
+}
+.nlInput input:focus{
+    outline: none;
+}
+
+.nlInput button{
+    position: absolute;
+    right:25%;
+    width: 8vw;
+    height: 5vh;
+    border-radius: 34px;
+    border: none;
+    background-color: #8F43EE;
+    color: white;
+    font-weight: 500;
+    transition: transform 0.35s;
+}
+
+.nlInput button:hover{
+    transform: scale(0.95);
+}
+
+
+.footerContainer{
+    width: 100%;
+    height: 50vh;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.footerWrapper{
+    width: 100%;
+    height: 36vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.brandWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: -4%;
+}
+
+.brandWrapper .brandTag{
+    font-size: 22px;
+    font-weight: 600;
+}
+.brandWrapper .brandTag span{
+    color: var(--brand-color);
+}
+
+.brandWrapper .brandQuote{
+    font-size: 14px;
+    width: 18vw;
+    color: rgb(205, 205, 205);
+}
+
+.Info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+.Info p{
+    color:rgb(205, 205, 205);
+    font-size: 14px;
+}
+
+.socialMedia{
+    width: 20vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.socialMedia img{
+    background-color: white;
+    border-radius: 20px;
+}
+
+.copyrightInfo{
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hrLine{
+    background-color: rgb(91, 91, 91);
+    height: 1px;
+    width: 70vw;
+    margin: 1vh 0vh;
+}
+
+.copyRight{
+    font-size: 13px;
+    color: rgb(191, 191, 191);
+}

@@ -1,4 +1,4 @@
-const features = {
+export const features = {
     title:"Work Smarter, Not Harder: The Features You Need to Succeed",
 
     feature1 :{
@@ -28,4 +28,18 @@ const features = {
     }
 }
 
-export default features;
+export const testimonials = {
+    title : "Task Management Made Easy: What Our Customers Have to Say",
+    review1 :{
+        text: "I love using this task management app! It has all the features I need to stay organized and productive. The interface is user-friendly and easy to navigate, and I can access my tasks and notes from anywhere. Highly recommended!",
+        name: "Antonia Jonathan"
+    },
+    review2 :{
+        text: "As someone who juggles multiple projects at once, this app has been a game-changer for me. The ability to create to-do lists and track progress has helped me stay on top of my work and meet deadlines",
+        name: "Henrick Bishop"
+    },
+    review3 :{
+        text: "I have been using this task management website for a while now and I can say that it has helped me become more organized and productive. It's user-friendly interface and various features such as progress tracking",
+        name: "John Patrick"
+    }
+}

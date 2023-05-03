@@ -1,0 +1,255 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.mainContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.leftWrapper{
+    width: 40vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+
+.leftLegend{
+    font-size: 34px;
+    font-weight: 600;
+    position: relative;
+    top:-8%;
+    right: -5%;
+    width: 30vw;
+    text-align: center;
+}
+.leftImg{
+    border: 2px solid #efe5fc;
+    border-radius: 20px;
+    box-shadow: 8px 8px 32px 4px #e4cffe;
+    position: relative;
+    top: -5%;
+    right: -5%;
+}
+.rightWrapper{
+    width: 40vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightTitle{
+    font-size: 28px;
+    font-weight: 600;
+}
+.rightTitle span{
+    color: #8e42ec;
+}
+
+.rightSubt{
+    color: rgb(160, 160, 160);
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.formWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.emailInputWrap{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+}
+
+.emailLabel{
+    font-size: 18px;
+    font-weight: 500;
+    margin: 1rem 0rem;
+}
+
+.emailInputWrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.emailInputWrapper input{
+    width: 20vw;
+    height: 5vh;
+    border-radius: 10px;
+    border: none;
+    background-color: #EFEFEF;
+    padding: 1rem;
+}
+.emailInputWrapper input:focus{
+    outline: none !important;
+}
+.emailInputWrapper ion-icon{
+    font-size: 20px;
+    color:#8e42ec;
+    position: absolute;
+    right:1rem;
+}
+
+.pwdWrap{
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+}
+
+.pwdLabel{
+    font-size: 18px;
+    font-weight: 500;
+    margin: 1rem 0rem;
+}
+
+.pwdInputWrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.pwdInputWrapper input{
+    width: 20vw;
+    height: 5vh;
+    border-radius: 10px;
+    border: none;
+    background-color: #EFEFEF;
+    padding: 1rem;
+}
+
+.pwdInputWrapper input:focus{
+    outline: none !important;
+}
+.pwdInputWrapper ion-icon{
+    font-size: 20px;
+    color:#8e42ec;
+    position: absolute;
+    right:1rem;
+}
+
+.formUtils{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.rememberMeWrap{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.rememberMeWrap input{
+    width: 14px;
+    height: 14px;
+    margin-right: 0.5rem;
+    position: relative;
+    top:-7px;
+}
+
+.rememberMeWrap p{
+    font-size: 14px;
+}
+
+.forgot{
+    font-size: 14px;
+    color: rgb(57, 106, 242);
+    cursor: pointer;
+}
+
+.submitBtn{
+    width: 9vw;
+    height: 4.5vh;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #8e42ec;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    position: relative;
+    left: 27%;
+    margin: 2rem 0rem;
+    box-shadow: 4px 4px 32px 4px #c99dff;
+    transition: 0.3s all ease-in-out;
+}
+.submitBtn:hover{
+    transform: scale(0.97);
+}
+
+.lastWrappper{
+    width:20vw;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.breakPoint{
+    display: flex;
+    width: 2vw;
+    align-items: center;
+}
+.breakPoint span{
+    width: 1.5px;
+    height: 60vh;
+    background-color: rgb(219, 219, 219);
+    position: absolute;
+    left: 1rem;
+}
+.breakPoint p{
+    position: absolute;
+    background-color: white;
+    z-index: 2;
+    top:48vh;
+    left:0.7rem;
+}
+
+.socialSSI{
+    display: flex;
+    flex-direction: column;
+    height: 16vh;
+    justify-content: space-between;
+    position: relative;
+    right: 5vw;
+}
+
+.signinPoly1{
+    position: absolute;
+    bottom: -18vh;
+    left:-8vw;
+    z-index: -1;
+}
+
+.signinPoly2{
+    position: absolute;
+    top:-14vh;
+    right:-10vw;
+    z-index: -1;
+}
+
+.createLink span{
+    color: #8e42ec;
+}
