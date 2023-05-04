@@ -1,0 +1,60 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.menuBarWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 14vw;
+    height: 100vh;
+    padding: 0.5rem;
+    border: 1px solid rgb(213, 213, 213);
+    position: relative;
+}
+.toggleBarWrap{
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    margin-left: 1.25rem;
+}
+.toggleBarWrap ion-icon{
+    font-size: 30px;
+    cursor: pointer;
+}
+.toggleBarWrap p{
+    margin: 0 1rem;
+    font-size: 20px;
+    font-weight: 500;
+}
+.toggleBarWrap p span{
+    color: #8F43EE;
+}
+.menuWrap{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+    top: -3vh;
+}
+
+.modesWrap{
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.modesWrap ion-icon{
+    font-size: 24px;
+    margin: 0rem 1.25rem;
+    cursor: pointer;
+}
