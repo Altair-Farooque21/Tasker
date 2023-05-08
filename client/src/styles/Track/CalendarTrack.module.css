@@ -1,0 +1,8 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --theme :#8F43EE;
+    --bg-container: #f4f4f4;
+}
+

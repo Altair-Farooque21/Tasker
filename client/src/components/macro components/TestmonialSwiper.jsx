@@ -1,4 +1,5 @@
 import React from 'react';
+
 import "./TestmonialSwiper.css";
 import TestimonialCard from '../common/TestimonialCard.jsx';
 
@@ -12,9 +13,14 @@ import SwiperCore,{  Pagination, EffectCoverflow } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-coverflow';
+// import "./css/bundle";
+// import 'swiper/css/pagination';
+// import 'swiper/css/effect-coverflow';
+import "../../../node_modules/swiper/swiper.css";
+import '../../../node_modules/swiper/modules/effect-coverflow/effect-coverflow.min.css';
+import "../../../node_modules/swiper/modules/pagination/pagination.min.css";
+import "../../../node_modules/swiper/swiper-bundle.esm.js";
+
 
 
 SwiperCore.use([ Pagination, EffectCoverflow]);

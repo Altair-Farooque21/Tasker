@@ -1,0 +1,72 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --theme :#8F43EE;
+    --bg-container: #f4f4f4;
+}
+
+
+.tdWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 6px 6px 32px #d3d3d3;
+    width: 28vw;
+    height: 13vh;
+    margin: 1rem 0rem;
+    border-radius: 12px;
+    background-color: white;
+    position: relative;
+    transition: 0.2s transform ease-in-out;
+}
+.tdWrapper:hover{
+    cursor: pointer;
+    transform: scale(0.97);
+}
+.tdTopContainer{
+    width: 88%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tdTitlee{
+    font-size: 17px;
+    font-weight: 500;
+    color: #181818;
+}
+
+.tdDuedate{
+    font-size: 15px;
+    font-weight: 500;
+    color: #1D8FF9;
+}
+
+.tdBtmContainer{
+    width: 88%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tdBtmContainer img{
+    border-radius: 20px;
+}
+.tdBtmContainer p{
+    margin: 0rem 1rem;
+    font-size: 15px;
+    font-weight: 500;
+}
+.tdTeams{
+    display: flex;
+    align-items: center;
+    width: 10vw;
+}
+
+.tdTasks{
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(160, 160, 160);
+}

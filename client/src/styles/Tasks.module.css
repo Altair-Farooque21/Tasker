@@ -23,22 +23,54 @@
     background-color: var(--bg-container);
     border-radius: 12px;
     position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16vw, 1fr));
+    grid-auto-rows: 40vh; /* Set a fixed height for the grid items */
+    gap: 1rem;
+    padding: 2rem 3rem;
+    scroll-behavior:smooth;
+      
 }
-
+.tasksWrapper::-webkit-scrollbar{
+    width: 0 !important;
+}
 .tasksWrapper ion-icon{
-    position: absolute;
-    bottom: 3rem;
-    right:3rem;
+    position: fixed;
+    bottom: 5rem;
+    right:5rem;
     font-size: 44px;
     background-color: var(--theme);
     color: rgb(255, 255, 255);
     box-shadow: 4px 4px 20px #bf8afc;
     background-color: #8F43EE;
     border-radius: 24px;
-    transition: 0.3s all ease-in-out;
+    transition: 0.25s all ease-in-out;
     cursor: pointer;
     
 }
 .tasksWrapper ion-icon:hover{
-    transform: scale(0.9);
+    transform: scale(0.95);
+}
+
+.addTaskOverlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: opacity 0.5s ease-in-out;
+}
+
+.show{
+    display: visible;
+    opacity: 1;
+}
+
+.close{
+    display: none;
+    opacity: 0;
 }

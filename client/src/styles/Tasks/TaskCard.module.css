@@ -1,0 +1,106 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --theme :#8F43EE;
+    --bg-container: #f6f6f6;
+}
+p{
+    color: #181818;
+}
+.taskCardWrapper{
+    width: 16vw;
+    height: 40vh;
+    border: 1px solid rgb(215, 215, 215);
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 6px 6px 32px #d3d3d3;
+    transition: 0.25s transform ease-in-out;
+
+}
+
+.taskCardWrapper:hover{
+    cursor: pointer;
+    transform: scale(0.97);
+}
+
+.taskCardWrapper::-webkit-scrollbar{
+    width: 0 !important;
+}
+
+.taskTitle{
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0rem 0rem;
+    position: relative;
+    top:-0.5rem;
+}
+
+.taskContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskDescp{
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(141, 141, 141);
+    overflow: hidden;
+    width: 12vw;
+    height: 8vh;
+    text-overflow: ellipsis;
+}
+
+.taskMetadata{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  row-gap: 2rem;
+}
+
+.taskPriorityKey{
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0rem 0rem;
+}
+.taskDue{
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0rem 0rem;
+}
+.taskTeam{
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0rem 0rem;
+}
+.taskPriorityValue{
+    font-size: 14px;
+    margin: 0rem 0rem;
+    color: red;
+}
+.taskDueDate{
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0rem 0rem;
+    color: #1D8FF9;
+}
+.taskTeamPf{
+    display: flex;
+    align-items: center;
+}
+.taskTeamPf img{
+    border-radius: 20px;
+}
+.taskTeamCnt{
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0rem 0rem;
+}

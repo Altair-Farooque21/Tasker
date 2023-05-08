@@ -1,6 +1,8 @@
 import React from 'react';
 import css from './DashBoardContent.module.css';
 import person1 from "../../assets/person2.jpg";
+import TasksDashboad from './Tasks/TasksDashboad';
+import NotesDashboard from './Notes/NotesDashboard';
 
 function DashBoardContent() {
   return (
@@ -10,7 +12,15 @@ function DashBoardContent() {
              <p className={css.tasksTitle}>Tasks</p>
              <div className={css.tasksContainer}>
                  {/* here goes the minimal card components */}
-                 tasks card
+                 <TasksDashboad />
+                 <TasksDashboad />
+                 <TasksDashboad />
+                 <TasksDashboad />
+                 <TasksDashboad />
+                 <TasksDashboad />
+                 <TasksDashboad />
+                 <TasksDashboad />
+                 <TasksDashboad />
              </div>
         </div>
 
@@ -21,7 +31,12 @@ function DashBoardContent() {
                 <p className={css.notesTitle}>Notes</p>
                 <div className={css.notesContainer}>
                      {/* here goes the notes minimal components */}
-                     notes card
+                     <NotesDashboard />
+                     <NotesDashboard />
+                     <NotesDashboard />
+                     <NotesDashboard />
+                     <NotesDashboard />
+                     <NotesDashboard />
                 </div>
             </div>
             {/* track section */}

@@ -1,0 +1,33 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --theme :#8F43EE;
+    --bg-container: #f4f4f4;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 18vw;
+    height: 14vh;
+
+}
+
+.container button{
+    width: 12vw;
+    height: 5vh;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #EEE1FF;
+    border-radius: 8px;
+    border: none;
+    color: #8F43EE;
+}
+.container p{
+    font-size: 12px;
+    font-weight: 500;
+    color: #ADADAD;
+}

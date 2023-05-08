@@ -43,16 +43,12 @@
     background-color: var(--bg-container);
     position: relative;
     top:1rem;
-    display: flex;
-    flex-wrap: wrap;
-    overflow: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     scroll-behavior: smooth;
+    padding: 0.5rem 1rem;
 }
+
+.tasksContainer::-webkit-scrollbar { width: 0 !important }
+
 
 .ntWrapper{
     display: flex;
@@ -80,16 +76,15 @@
     padding: 0;
 }
 .notesContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: var(--bg-container);
     border-radius: 12px;
     width: 24vw;
     height: 85%;
     scroll-behavior: smooth;
+    padding: 0.5rem 1rem;
 }
+.notesContainer::-webkit-scrollbar { width: 0 !important }
+
 .trackWrapper{
     display: flex;
     flex-direction: column;

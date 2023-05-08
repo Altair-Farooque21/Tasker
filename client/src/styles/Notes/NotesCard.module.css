@@ -1,0 +1,61 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --theme :#8F43EE;
+    --bg-container: #f4f4f4;
+}
+
+.noteCardContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    height: 34vh;
+    border-radius: 12px;
+    transition: 0.25s transform ease-in-out;
+    background-color: #c3a3eb;
+    border: 1px solid rgb(225, 225, 225);
+}
+
+.title{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.noteText{
+    width: 11vw;
+    height: 14vh;
+    font-size: 14px;
+    overflow: hidden;
+    
+}
+.noteText::-webkit-scrollbar{
+    width: 0 !important;
+}
+
+.editWrap{
+    display: flex;
+    width: 11vw;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 1rem;
+}
+.createDate{
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid black;
+    padding: 2px 10px;
+    border-radius: 6px;
+}
+
+.editWrap ion-icon{
+    font-size: 25px;
+    background-color: inherit;
+    font-weight: 500;
+    color: black;
+    z-index: inherit;
+    cursor: pointer;
+}
