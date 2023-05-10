@@ -1,7 +1,7 @@
 import React ,{useState} from 'react';
 
 import FormElement from './common/FromElement';
-import css from "./Signup.module.css";
+import css from "../styles/Signup.module.css";
 
 function Signup() {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import css from "./AddTaskBtn.module.css";
+import css from "../../../styles/Tasks/AddTaskBtn.module.css";
 
 function AddTaskBtn(props) {
   return (

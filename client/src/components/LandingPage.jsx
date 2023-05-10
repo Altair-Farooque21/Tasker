@@ -1,5 +1,5 @@
 import React from 'react';
-import css from "./LandingPage.module.css"
+import css from "../styles/LandingPage.module.css"
 import heroBg from "../assets/animations/landingpage/heroBlob.svg";
 import heroImg from "../assets/heroImg.png";
 

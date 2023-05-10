@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import css from "./DashBoard.module.css";
+import css from "../styles/DashBoard.module.css";
 import NavMenuBar from './macro components/NavMenuBar';
 import DashBoardContent from './macro components/DashBoardContent';
 import Checklist from './Checklist';

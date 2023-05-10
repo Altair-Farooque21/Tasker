@@ -1,6 +1,6 @@
 import React from 'react';
 import css from "../../../styles/Tasks/AddTaskOverlay.module.css";
-import AddTaskBtn from '../../micro components/AddTaskBtn';
+import AddTaskBtn from './AddTaskBtn';
 
 
 function AddTaskOverlay({onClose}) {
