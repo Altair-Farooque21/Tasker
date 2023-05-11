@@ -42,7 +42,7 @@ function CalendarTrack() {
 
   const handledragEvents = (info) =>{
     const draggedEvent = info.event;
-    const updatedEvent = { ...draggedEvent };
+    // const updatedEvent = { ...draggedEvent };
     // finding index
     const eventIndex = calendarEvents.findIndex(
       (event) => event.title === draggedEvent.title

@@ -1,4 +1,8 @@
 import React,{useState} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+
 import css from "../styles/Signin.module.css";
 import signinImg from "../assets/SigninImg.png";
 import FormElement from './common/FromElement';
@@ -15,17 +19,48 @@ function Signin() {
         email: '',
         password: ''
       });
+    
+    // for navigating through routes
+    const navigate = useNavigate();
 
+    // for handling form elements 
     const handleInputChange = (name, value) => {
         setFormData({ ...formData, [name]: value });
       };
-      
     
-      const handleSubmit = (event) => {
+    // this will cache token for future requests
+    // than navigates to Dashboard
+    const onLogin = (token) => {
+        sessionStorage.setItem('authToken',token);
+        navigate('/dashboard',{ replace:true });
+    }
+    
+    // this will send form data to backend 
+    // if user exists the token will be returned 
+    // as response from server or backend 
+    const userAuthentication = async (event) => {
+        // prevents from refreshing the page on form submit
         event.preventDefault();
         console.log(formData);
-      };
+        try{
+            // making a post request in axios to server
+            const response = await axios.post('/users/signin',formData,{
+                    headers: {
+                        'Content-Type': 'application/json'
+                      }
+                  });
+            // getting reponse from server both status and data
+            console.log(response.data); // logging response from the server
+            const jwtToken = response.data.token;
 
+            // call for redirect to main page
+            onLogin(jwtToken);
+            }
+        catch (error) { // catching errors if request failed 
+            console.error(error);
+          }
+      };
+  
   return (
     <div className={css.mainContainer}>
         <div className={css.leftWrapper}>
@@ -44,7 +79,7 @@ function Signin() {
             </p>
 
             <div className={css.formWrapper}>
-                <form onSubmit={handleSubmit} className={css.form}>
+                <form onSubmit={userAuthentication} className={css.form}>
 
                     <FormElement label='Email'
                       err=''
@@ -79,7 +114,7 @@ function Signin() {
                     <button className={css.submitBtn} type='submit'> Sign In </button>
                 </form>
                 <div className={css.createLink}>
-                    <p> Don’t have an account ? <span>Create one</span></p>
+                    <p> Don’t have an account ? <Link to = '/signup'>Create one</Link></p>
                 </div>
                 
             </div>
