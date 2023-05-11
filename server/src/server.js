@@ -1,9 +1,14 @@
 const express = require('express');
 const userRouter = require('./Routes/userRoutes');
-const app = express();
 const mongoose = require('mongoose');
+const cors = require('cors');
+
+
+const app = express();
 
 app.use(express.json());
+app.use(cors());
+
 // initial end point for the userRouter routes 
 app.use('/users',userRouter);
 

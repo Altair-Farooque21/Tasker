@@ -1,7 +1,7 @@
 const userModel = require("../Models/user");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const SECRET_KEY = "SECRET_KEY_0863";
+const SECRET_KEY = "S3CR3T_T@K3R_@0863";
 
 const signup = async (req,res) =>{
     // existing user check
@@ -56,7 +56,7 @@ const signin = async (req,res) =>{
             email: existinguser.email,
             id: existinguser._id
         },
-        SECRET_KEY);
+        SECRET_KEY,{ expiresIn: '1h' });
 
         return res.status(200).json({
             user: existinguser,
