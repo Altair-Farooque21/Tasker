@@ -7,6 +7,7 @@
 .mainContainer{
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -250,6 +251,8 @@
     z-index: -1;
 }
 
-.createLink span{
+.createLink a{
     color: #8e42ec;
+    font-weight: 600;
+    text-decoration: none;
 }

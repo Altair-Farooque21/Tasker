@@ -41,10 +41,10 @@
     background-color: var(--brand-color);
     color: white;
     font-weight: 500;
-    transition: all 0.25s ease-out;
+    transition: all 0.25s ease-in-out;
 }
 .signUpBtn:hover{
-    transform: scale(0.95);
+    transform: scale(0.97);
 }
 .signUp{
     width: 20vw;
@@ -219,7 +219,7 @@ Hero section done */
 }
 
 .newsLetterContainer{
-    height: 50vh;
+    height: 70vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -310,6 +310,7 @@ Hero section done */
 .brandWrapper .brandTag{
     font-size: 22px;
     font-weight: 600;
+    color: white;
 }
 .brandWrapper .brandTag span{
     color: var(--brand-color);

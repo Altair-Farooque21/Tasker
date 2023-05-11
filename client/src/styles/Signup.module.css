@@ -73,6 +73,10 @@
     position: relative;
     left: 40%;
     margin: 5% 0%;
+    transition: transform 0.25s ease-in-out;
+}
+.formSubmitBtn:hover{
+    transform: scale(0.97);
 }
 
 .signInlink{
@@ -83,7 +87,8 @@
     top:-6vh;
 }
 
-.signInlink span{
+.signInlink a{
     color: #8e42ec;
     cursor: pointer;
+    text-decoration: none;
 }

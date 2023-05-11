@@ -1,0 +1,72 @@
+.verifyContainer{
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.desc{
+    width: 52vw;
+    font-size: 16px;
+    text-align: center;
+    color: gray;
+    margin: 1rem 1rem 3rem 1rem;
+}
+.formConatiner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formCodeWrap{
+    width: 36vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+}
+.formCodeWrap input{
+    width: 3vw;
+    height: 7vh;
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: center;
+    border: 3px solid #d0a9ff;
+}
+.formCodeWrap input:focus{
+    border: 3px solid #8e42ec;
+    outline: none !important;
+}
+
+.verifyBtn{
+    width: 8vw;
+    height: 4vh;
+    border: none;
+    background-color: #8e42ec;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    margin: 1rem 0rem;
+}
+.verifyBtn:hover{
+    transform: scale(0.97);
+}
+
+.resendCode{
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(32, 114, 238);
+    cursor: pointer;
+}
+.resendCode:hover{
+    text-decoration: underline;
+}
