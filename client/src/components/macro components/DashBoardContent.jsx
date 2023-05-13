@@ -9,7 +9,7 @@ function DashBoardContent() {
     <div className={css.contentWrapper}>
 
         <div className={css.tasksWrapper}>
-             <p className={css.tasksTitle}>Tasks</p>
+             <p className={css.tasksTitle}>Projects</p>
              <div className={css.tasksContainer}>
                  {/* here goes the minimal card components */}
                  <TasksDashboad />

@@ -12,9 +12,9 @@ function NavMenuBar() {
         </div>
         <div className={css.menuWrap}>
             <MenuItem to='/dashboard' icon = 'grid-outline' name = "Dashboard" />
-            <MenuItem to='/dashboard/tasks' icon = 'calendar-number-outline' name = "Tasks" />
+            <MenuItem to='/dashboard/tasks' icon = 'calendar-number-outline' name = "Projects" />
             <MenuItem to='/dashboard/notes' icon = 'document-text-outline' name = "Notes" />
-            <MenuItem to='/dashboard/todos' icon = 'checkbox-outline' name = "To-do's" />
+            <MenuItem to='/dashboard/todos' icon = 'checkbox-outline' name = "Tasks" />
             <MenuItem to='/dashboard/tracks' icon = 'hourglass-outline' name = "Track" />
         </div>
         <div className={css.modesWrap}>
