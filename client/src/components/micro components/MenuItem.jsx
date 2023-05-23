@@ -1,12 +1,11 @@
 import React from 'react';
 import css from "./MenuItem.module.css";
-import { Link } from 'react-router-dom';
 
 function MenuItem(props) {
   return (
-    <div className={css.itemWrapper}>
+    <div className={`${!props.CloseSideBar ? css.shrinkWrapper :  css.itemWrapper }`}>
         <ion-icon name={props.icon}></ion-icon>
-        <Link to ={props.to}><p>{props.name}</p></Link>
+        <p className = {css.menuLink}>{props.name}</p>
     </div>
   )
 }

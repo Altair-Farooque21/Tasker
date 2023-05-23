@@ -1,9 +1,9 @@
 import React from 'react';
 import css from "../../../styles/Notes/NotesCard.module.css";
 
-function NotesCard() {
+function NotesCard({uid,mode,handleClick}) {
   return (
-    <div className={css.noteCardContainer} style={{ isolation: 'isolate' }}>
+    <div className={css.noteCardContainer} style={{ isolation: 'isolate' }} onClick={()=> handleClick(uid)}>
          <p className={css.title}>
              Web design tips
          </p>
