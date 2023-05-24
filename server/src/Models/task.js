@@ -4,7 +4,7 @@ const taskSchema = moongose.Schema({
 
     // this ID is assigned using User generated ID 
     // now this model belongs to user ID 
-    taskID :{
+    userID :{
         type:moongose.Schema.Types.ObjectId,
         ref: "User",
         required: true
@@ -34,4 +34,4 @@ const taskSchema = moongose.Schema({
     }
 })
 
-module.exports = moongose.model('Note',noteSchema);
+module.exports = moongose.model('Task',taskSchema);

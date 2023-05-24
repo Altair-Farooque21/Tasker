@@ -4,12 +4,12 @@ const trackSchema = moongose.Schema({
 
     // this ID is assigned using User generated ID 
     // now this model belongs to user ID 
-    trackID :{
+    userID :{
         type:moongose.Schema.Types.ObjectId,
         ref: "User",
         required: true
     },
-    title: {
+    event: {
         type:String,
         require: true
     },
@@ -24,4 +24,4 @@ const trackSchema = moongose.Schema({
     
 })
 
-module.exports = moongose.model('Track',noteSchema);
+module.exports = moongose.model('Track',trackSchema);

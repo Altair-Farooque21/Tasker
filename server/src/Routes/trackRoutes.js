@@ -1,21 +1,19 @@
 const express = require('express');
 const trackRouter = express.Router();
+const {
+    createEvent,
+    getEvent,
+    deleteEvent,
+    updateEvent
+} = require("../Controllers/trackController");
 
 
-trackRouter.get('/',(req,res)=>{
+trackRouter.get('/',getEvent);
 
-});
+trackRouter.post('/',createEvent);
 
-trackRouter.post('/',(req,res)=>{
+trackRouter.put('/trackId',updateEvent);
 
-});
-
-trackRouter.put('/:Id',(req,res)=>{
-
-});
-
-trackRouter.delete('/:Id',(req,res)=>{
-
-});
+trackRouter.delete('/:trackId',deleteEvent);
 
 module.exports = trackRouter;

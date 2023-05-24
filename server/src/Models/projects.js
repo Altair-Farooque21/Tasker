@@ -4,7 +4,7 @@ const projectSchema = moongose.Schema({
 
     // this ID is assigned using User generated ID 
     // now this model belongs to user ID 
-    projectID :{
+    ID :{
         type:moongose.Schema.Types.ObjectId,
         ref: "User",
         required: true
