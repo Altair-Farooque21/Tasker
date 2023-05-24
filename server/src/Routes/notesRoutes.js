@@ -13,8 +13,8 @@ noteRouter.get('/',getNote);
 
 noteRouter.post('/',createNote);
 
-noteRouter.put('/:Id',updateNote);
+noteRouter.put('/:noteID',updateNote);
 
-noteRouter.delete('/:Id',deleteNote);
+noteRouter.delete('/:noteID',deleteNote);
 
 module.exports = noteRouter;
