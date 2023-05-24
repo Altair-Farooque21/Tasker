@@ -27,28 +27,15 @@ function Notes() {
     setcardClose(!cardClose);
     setaddNote(!addNote);
     console.log(addNote);
+    let date = Date().split(' ');
+    console.log(date);
   }
   return (
     <div className={css.notesContainer}>
        <div className={css.notesWrapper}>
             {/* this is the  container grid for tasks */}
-                <NotesCard mode="view" uid = "1231" handleClick = {handleCardClick} />
-                <NotesCard mode="view" uid = "1234"  handleClick = {handleCardClick}/>
-                <NotesCard mode="view" uid = "1831"  handleClick = {handleCardClick}/>
-                <NotesCard mode="view" uid = "2331"  handleClick = {handleCardClick}/>
-                <NotesCard mode="view" uid = "13431" handleClick = {handleCardClick} />
-                <NotesCard mode="view" uid = "1234231"  handleClick = {handleCardClick}/>
-                <NotesCard mode="view" uid = "123423431"  handleClick = {handleCardClick}/>
-                <NotesCard mode="view" uid = "2342431" handleClick = {handleCardClick} />
-                <NotesCard mode="view" uid = "42341" handleClick = {handleCardClick} />
-                <NotesCard mode="view" uid = "98234931" handleClick = {handleCardClick} />
-                <NotesCard mode="view" uid = "234731" handleClick = {handleCardClick} />
-                <NotesCard mode="view" uid = "093421"  handleClick = {handleCardClick}/>
-                <NotesCard mode="view" uid = "34241"  handleClick = {handleCardClick}/>
-                <NotesCard mode="view" uid = "2341"  handleClick = {handleCardClick}/>
-                <NotesCard mode="view" uid = "431"  handleClick = {handleCardClick}/>
-                <NotesCard mode="view" uid = "3431"  handleClick = {handleCardClick}/>
-                <NotesCard mode="view" uid = "84731"  handleClick = {handleCardClick}/>
+            Get notes from the server!
+            <p> {sessionStorage.getItem('userID')}</p>
        </div>
       
        <img onClick ={handleAddNote} className={css.AddFAB} src={addFab} alt="" width={56} color='white'/>

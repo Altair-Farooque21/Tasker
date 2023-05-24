@@ -30,8 +30,9 @@ function Signin() {
     
     // this will cache token for future requests
     // than navigates to Dashboard
-    const onLogin = (token) => {
+    const onLogin = (token,userID) => {
         sessionStorage.setItem('authToken',token);
+        sessionStorage.setItem("userID",userID)
         navigate('/dashboard',{ replace:true });
     }
     
@@ -50,11 +51,12 @@ function Signin() {
                       }
                   });
             // getting reponse from server both status and data
-            console.log(response.data); // logging response from the server
+            // console.log(response.data); // logging response from the server
             const jwtToken = response.data.token;
+            const userId = response.data.user._id;
 
             // call for redirect to main page
-            onLogin(jwtToken);
+            onLogin(jwtToken,userId);
             }
         catch (error) { // catching errors if request failed 
             console.error(error);

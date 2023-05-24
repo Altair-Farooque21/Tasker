@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import css from "../../../styles/Notes/NotesCard.module.css";
 
-function NotesCard({uid,mode,handleClick}) {
+function NotesCard({uid,color,title,note,cDate,handleClick}) {
+  const containerRef = useRef(null);
+  const colorCode = color;
+
+  useEffect(()=>{
+    containerRef.current.style.backgroundColor = colorCode;
+  },[colorCode]);
+
   return (
-    <div className={css.noteCardContainer} style={{ isolation: 'isolate' }} onClick={()=> handleClick(uid)}>
+    <div className={css.noteCardContainer} ref={containerRef} style={{ isolation: 'isolate' }} onClick={()=> handleClick(uid)}>
          <p className={css.title}>
              Web design tips
          </p>

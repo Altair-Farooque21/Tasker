@@ -25,8 +25,9 @@ function Signup() {
 
   // this will cache token for future requests
   // then navigates to email Verification page
-  const onUserRegistration = (token) => {
+  const onUserRegistration = (token,userID) => {
     sessionStorage.setItem('authToken',token);
+    sessionStorage.setItem("userID",userID);
     navigate('/verification',{ replace:true });
   }
 
@@ -52,9 +53,10 @@ function Signup() {
         // getting reponse from server both status and data
         console.log(response.data); // Handle the response from the server
         const jwtToken = response.data.token;
+        const userId = response.data.user._id;
 
         // call for redirect to verification page
-        onUserRegistration(jwtToken);
+        onUserRegistration(jwtToken,userId);
         }
     catch (error) {// catching errors if request failed 
         console.error(error);
