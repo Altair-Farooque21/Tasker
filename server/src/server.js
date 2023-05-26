@@ -1,4 +1,8 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+// .env configuration
+require("dotenv").config();
 // routes modules
 const userRouter = require('./Routes/userRoutes');
 const notesRouter = require('./Routes/notesRoutes');
@@ -6,10 +10,6 @@ const taskRouter = require('./Routes/taskRoutes');
 const projectRoutes = require('./Routes/projectRoutes');
 const trackRoutes = require('./Routes/trackRoutes');
 // mongoose API for MongoDB
-const mongoose = require('mongoose');
-// for cross-origin access
-const cors = require('cors');
-
 
 const app = express();
 

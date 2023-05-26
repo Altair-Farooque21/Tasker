@@ -1,0 +1,97 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --theme :#8F43EE;
+    --bg-container: #f7f7f7;
+}
+
+.container{
+    width: 30%;
+    height: 60%;
+    background-color: white;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.titleWrapper{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.titleWrapper p{
+    margin: 0rem 0rem;
+    font-size: 17px;
+    font-weight: 600;
+}
+.titleWrapper input{
+    width: 100%;
+    height: 5vh;
+    border: none;
+    margin: 1rem 0rem;
+    background-color: #e7e7e7;
+    border-radius: 10px;
+    padding: 0rem 1rem;
+}
+
+.titleWrapper input:focus{
+    outline: none !important;
+}
+
+.deadlineWrapper{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.deadlineWrapper p{
+    margin: 0rem 0rem;
+    font-size: 17px;
+    font-weight: 600;
+}
+.deadlineWrapper input{
+    width: 50%;
+    height: 5vh;
+    border: 2px solid #8F43EE;
+    margin: 1rem 0rem;
+    background-color: #fafafa;
+    border-radius: 8px;
+    padding: 0rem 1rem;
+}
+.deadlineWrapper input:focus{
+    outline: none !important;
+}
+.AddBtn{
+    width: 8.5vw;
+    height: 4.25vh;
+    border: none;
+    background-color: #8F43EE;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    transition: all 0.25s ease-in-out;
+}
+
+.AddBtn:hover{
+    transform: scale(0.95);
+}
+.closeOverlay{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+.closeOverlay:hover{
+    transform: scale(0.95);
+}

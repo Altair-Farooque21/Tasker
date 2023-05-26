@@ -21,7 +21,7 @@ function NavMenuBar() {
         </div>
         <div className={css.menuWrap}>
           <Link to='/dashboard'> <MenuItem  icon = 'grid-outline' name = "Dashboard" toggleBar = {CloseSideBar}/></Link>
-          <Link to='/dashboard/tasks'> <MenuItem  icon = 'calendar-number-outline' name = "Projects" toggleBar = {CloseSideBar}/></Link>
+          <Link to='/dashboard/projects'> <MenuItem  icon = 'calendar-number-outline' name = "Projects" toggleBar = {CloseSideBar}/></Link>
           <Link to='/dashboard/notes'> <MenuItem  icon = 'document-text-outline' name = "Notes" toggleBar = {CloseSideBar}/></Link>
           <Link to='/dashboard/todos'> <MenuItem  icon = 'checkbox-outline' name = "Tasks" toggleBar = {CloseSideBar}/></Link>
           <Link to='/dashboard/tracks'> <MenuItem  icon = 'hourglass-outline' name = "Track" toggleBar = {CloseSideBar}/></Link>

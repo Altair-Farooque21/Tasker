@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --theme :#8F43EE;
+    --bg-container: #f7f7f7;
+}
+
+
+.container{
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 4px 4px 16px rgb(210, 210, 210);
+    margin: 1rem 0rem;
+    position: relative;
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+}
+.container:hover{
+    transform: scale(1.02);
+}
+.checkBox{
+    width: 15px;
+    height: 15px;
+    margin: 0rem 1.5rem;
+}
+.title{
+    margin: 0rem 0rem;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.deadline{
+    margin: 0rem 0rem;
+    font-size: 15px;
+    font-weight: 600;
+    color: #4390ee;
+    position: absolute;
+    right: 1.5rem;
+}

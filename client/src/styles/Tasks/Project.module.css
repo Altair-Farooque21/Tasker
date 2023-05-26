@@ -1,0 +1,230 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --theme :#8F43EE;
+    --bg-container: #f7f7f7;
+}
+
+.mainContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    padding: 2rem 5rem;
+    position: relative;
+}
+
+.projectInfoWrapper{
+    width: 97%;
+    height: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 12px;
+    background-color: var(--bg-container);
+    border: 1px solid  var(--bg-container);
+}
+
+.projectDescWrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 55%;
+    height: 90%;
+}
+.projectTitle{
+    font-size: 22px;
+    font-weight: 700;
+    position: relative;
+    top:-10%;
+}
+.projectInfoWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 35%;
+    height: 90%;
+}
+
+.projectDealinesWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.projectStartWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+.projectstartDate{
+    font-size: 16px;
+    color: #4390ee;
+    font-weight: 500;
+}
+.projectDueWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.projectTeamsWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.projectpriorityWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+.projectpriority{
+    font-size: 13px;
+    font-weight: 500;
+    width: 4vw;
+    height: 3vh;
+    text-align: center;
+    background-color: rgb(255, 71, 71);
+    color: white;
+    border-radius: 20px;
+}
+.projectTeamWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+.projectUtilWrapper{
+    width: 97%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.projectSubtaskWrapper{
+    display: flex;
+    flex-direction: column ;
+    align-items: flex-start;
+    justify-content: center;
+    width: 45%;
+    height: 100%;
+    position: relative;
+
+}
+.projectTopicsWrapper{
+    display: flex;
+    flex-direction: column ;
+    align-items: flex-start;
+    justify-content: center;
+    width: 45%;
+    height: 100%;
+}
+.subtaskTitle{
+    font-size: 20px;
+    overflow: hidden;
+    font-weight: 600;
+    /* position: relative;
+    left:-40%;
+    top:0; */
+}
+.projectsubtasks{
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background-color: var(--bg-container);
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid  var(--bg-container);
+}
+.projectsubtasks::-webkit-scrollbar{
+    width: 0 !important;
+}
+
+.projectTopics{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background-color: var(--bg-container);
+}
+
+.topicsTitle{
+    font-size: 20px;
+    overflow: hidden;
+    font-weight: 600;
+}
+
+.subTaskAddBtn{
+    font-size: 15px;
+    font-weight: 600;
+    color: #4390ee;
+    background-color: var(--bg-container);
+    border: none;
+    transition: all 0.25s ease-in-out;
+    position: relative;
+    margin: 1rem 0rem;
+    left: 44%;
+}
+.subTaskAddBtn:hover{
+    transform: scale(0.95);
+}
+.topicAddBtn{
+    font-size: 15px;
+    font-weight: 600;
+    color: #4390ee;
+    background-color: var(--bg-container);
+    border: none;
+    transition: all 0.25s ease-in-out;
+}
+.topicAddBtn:hover{
+    transform: scale(0.95);
+}
+.closeOverlay{
+    position: absolute;
+    top: 1.5rem;
+    right: 2.5rem;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.closeOverlay:hover{
+    transform: scale(0.95);
+}
+
+.subTaskContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.show{
+    display: visible;
+}
+
+.close{
+    display: none;
+}

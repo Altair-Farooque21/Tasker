@@ -69,6 +69,23 @@ const signin = async (req,res) =>{
     }
     
 }
+const sendVerificationCode = async (req,res)=>{
+      const userEmail = req.body.email;
+      const verificationCode = Math.floor(100000 + Math.random() * 900000);
 
+      try {
+            const existinguser = await userModel.findOne({email:email});
+            if(!existinguser){
+                return res.status(404).json({message : "User not exists"})
+            }
 
-module.exports = {signin,signup};
+      }catch (error) {
+        
+      }
+
+}
+const verifyCodeFromClient = async (req,res) =>{
+      
+}
+
+module.exports = {signin,signup,verifyCodeFromClient,sendVerificationCode};

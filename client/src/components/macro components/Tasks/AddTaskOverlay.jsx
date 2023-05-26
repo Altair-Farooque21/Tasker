@@ -1,6 +1,7 @@
 import React from 'react';
 import css from "../../../styles/Tasks/AddTaskOverlay.module.css";
 import AddTaskBtn from './AddTaskBtn';
+import closeIcon from "../../../assets/close.png";
 
 
 function AddTaskOverlay({onClose}) {
@@ -59,9 +60,7 @@ function AddTaskOverlay({onClose}) {
         <div className={css.submitWrap}>
            <button> Add </button>
         </div>
-        <div className={css.closeOverlay} onClick={onClose}>
-              <ion-icon name="close-outline"></ion-icon>
-        </div>
+            <img className = {css.closeOverlay} src={closeIcon} alt="" width={24}  onClick={onClose}/>
     </div>
   )
 }

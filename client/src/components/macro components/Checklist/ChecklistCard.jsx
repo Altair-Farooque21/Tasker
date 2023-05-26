@@ -16,7 +16,7 @@ function ChecklistCard() {
           <div className={css.ccSubwrap}>
                 <img src={bookmark} alt="" width={20}/>
                 <p className={css.ccSub}>
-                    9 sub tasks
+                    9  checklist
                 </p>
           </div>
           <div className={css.reminder}> 

@@ -17,7 +17,7 @@ function DashBoard() {
         <NavMenuBar />
          <Routes>
             <Route path='/' element={<DashBoardContent />}/>
-            <Route path='/tasks' element={<Tasks />}/>
+            <Route path='/projects' element={<Tasks />}/>
             <Route path='/notes' element={<Notes />}/>
             <Route path='/todos' element={<Checklist />}/>
             <Route path='/tracks' element={<Tracks />}/>
