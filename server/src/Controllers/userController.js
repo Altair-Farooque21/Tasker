@@ -2,6 +2,10 @@ const userModel = require("../Models/user");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const SECRET_KEY = "S3CR3T_T@K3R_@0863";
+const sgMail = require('@sendgrid/mail');
+
+// Set SendGrid API key
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const signup = async (req,res) =>{
     // existing user check
@@ -72,15 +76,23 @@ const signin = async (req,res) =>{
 const sendVerificationCode = async (req,res)=>{
       const userEmail = req.body.email;
       const verificationCode = Math.floor(100000 + Math.random() * 900000);
-
       try {
-            const existinguser = await userModel.findOne({email:email});
+            const existinguser = await userModel.findOne({email:userEmail});
             if(!existinguser){
                 return res.status(404).json({message : "User not exists"})
             }
 
+            const msg = {
+                to : userEmail,
+                from: "altairFarooqueDeveloper@gmail.com",
+                subject: 'Verification Code',
+                text: `Your verification code is : ${verificationCode}`,
+            }
+            const sendCode = sgMail.send(msg);
+            res.status(200).json({ message :"Verification code send Succefuuly"})
       }catch (error) {
-        
+        console.log(error);
+        res.status(500).json({message:"Error while sending code!"})
       }
 
 }
