@@ -1,5 +1,6 @@
 import React ,{useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import {checkUsername,checkEmail,checkPasswordStrength,comparePasswords} from "../utils/FormValidations/SignupValidations"
 import axios from 'axios';
 
 import FormElement from './common/FromElement';
@@ -15,6 +16,13 @@ function Signup() {
     confirmPassword :''
   });
 
+  const [formErrors,setformErrors] = useState({
+    userName: '',
+    email: '',
+    password: '',
+    confirmPassword :''
+  })
+
   // for navigating through routes
   const navigate = useNavigate()
 
@@ -25,12 +33,29 @@ function Signup() {
 
   // this will cache token for future requests
   // then navigates to email Verification page
-  const onUserRegistration = (token,userID) => {
+  const onUserRegistration = (token,userID,email) => {
     sessionStorage.setItem('authToken',token);
     sessionStorage.setItem("userID",userID);
+    sessionStorage.setItem('email',email);
+    // if successful signup ,we will send verification code to verify email
+    onSignupSendVerificationCode();
+    // navigating to verifcation page for code
     navigate('/verification',{ replace:true });
   }
 
+  const onSignupSendVerificationCode = async ()=>{
+        const email  = formData.email;
+        try {
+          const response =  await axios.post('/users//send-Verification-Code',{email:email},{
+            headers: {
+                'Content-Type': 'application/json'
+              }
+          });
+          console.log(response);
+        }catch (error) {
+          console.error(error);
+        }
+  }
   // this will send form data to backend 
   // if user didn't exists and new user will registered 
   // then token will be returned as response from server or backend 
@@ -56,9 +81,16 @@ function Signup() {
         const userId = response.data.user._id;
 
         // call for redirect to verification page
-        onUserRegistration(jwtToken,userId);
+        onUserRegistration(jwtToken,userId,formData.email);
         }
-    catch (error) {// catching errors if request failed 
+    catch (error) {// catching errors if request failed
+        setformErrors(formErrors => ({
+          ...formErrors,
+          userName: checkUsername(error.response.data.errorCode,formData.userName),
+          email: checkEmail(error.response.data.errorCode,formData.email),
+          password: checkPasswordStrength(formData.password),
+          confirmPassword: comparePasswords(formData.password, formData.confirmPassword)
+        }));
         console.error(error);
       }
   };
@@ -81,7 +113,7 @@ function Signup() {
 
                     <FormElement label='Username'
                       type='text'
-                      err=''
+                      err={formErrors.userName}
                       placeholer='John23'
                       icon = 'person'
                       name = 'userName'
@@ -89,19 +121,20 @@ function Signup() {
                       onChange={handleInputChange} />
 
                     <FormElement label='Email'
-                      err=''
+                      err={formErrors.email}
                       type='email'
                       placeholer='Example123@domain.com'
                       icon = 'mail-outline'
                       name = 'email'
                       value={formData.email}
                       onChange={handleInputChange} />
+
                   </div>
 
 
                   <div className={css.formbtmWrap}>
                     <FormElement label='Password'
-                      err=''
+                      err={formErrors.password}
                       type='password'
                       placeholer='*******'
                       icon = 'lock-closed-outline'
@@ -111,7 +144,7 @@ function Signup() {
 
                     <FormElement label='Confirm Password'
                       type='password'
-                      err=''
+                      err={formErrors.confirmPassword}
                       placeholer='*******'
                       icon = 'lock-closed-outline'
                       name = 'confirmPassword'

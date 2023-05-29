@@ -12,10 +12,17 @@ const signup = async (req,res) =>{
     // existing user check
     const {username , email , password} = req.body;
     try{
-        const existinguser = await userModel.findOne({  email: email  });
+        // checking existing user
+        const existinguser = await userModel.findOne({  username : username  });
 
         if(existinguser){
-            return res.status(400).json({message : "User Already exists"})
+            return res.status(400).json({message : "Username Already exists",errorCode : "register.usernameExists"})
+        }
+
+        const existingEmail = await userModel.findOne({  email : email  });
+
+        if(existingEmail){
+            return res.status(400).json({message : "Email Already exists",errorCode : "register.emailExists"})
         }
         // hashing password
         const hashedPassword = await bcrypt.hash(password,10);
@@ -49,12 +56,12 @@ const signin = async (req,res) =>{
     try{
         const existinguser = await userModel.findOne({email:email});
         if(!existinguser){
-            return res.status(404).json({message : "User not exists"})
+            return res.status(404).json({message : "User not exists",errorCode : "user.doesnotexists"})
         }
         const matchPassword = await bcrypt.compare(password,existinguser.password);
         
         if(!matchPassword){
-            return res.status(400).json({message: "Invalid Credentials"})
+            return res.status(400).json({message: "Invalid Credentials",errorCode : "user.incorrectPassword"})
         }
 
         const token = jwt.sign({

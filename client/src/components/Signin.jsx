@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import {validateEmail,validatePassword} from "../utils/FormValidations/SigninValidation";
 
 import css from "../styles/Signin.module.css";
 import signinImg from "../assets/SigninImg.png";
@@ -20,6 +21,8 @@ function Signin() {
         password: ''
       });
     
+    const [emailError ,setemailError] = useState('');
+    const [pwdError,setpwdError] = useState('');
     // for navigating through routes
     const navigate = useNavigate();
 
@@ -32,7 +35,7 @@ function Signin() {
     // than navigates to Dashboard
     const onLogin = (token,userID) => {
         sessionStorage.setItem('authToken',token);
-        sessionStorage.setItem("userID",userID)
+        sessionStorage.setItem("userID",userID);
         navigate('/dashboard',{ replace:true });
     }
     
@@ -59,6 +62,8 @@ function Signin() {
             onLogin(jwtToken,userId);
             }
         catch (error) { // catching errors if request failed 
+            setemailError(validateEmail(error.response.data.errorCode));
+            setpwdError(validatePassword(error.response.data.errorCode));
             console.error(error);
           }
       };
@@ -84,7 +89,7 @@ function Signin() {
                 <form onSubmit={userAuthentication} className={css.form}>
 
                     <FormElement label='Email'
-                      err=''
+                      err={emailError}
                       type='email'
                       placeholer='Example123@domain.com'
                       icon = 'mail-outline'
@@ -93,7 +98,7 @@ function Signin() {
                       onChange={handleInputChange} />
                     
                     <FormElement label='Password'
-                      err=''
+                      err={pwdError}
                       type='password'
                       placeholer='*******'
                       icon = 'lock-closed-outline'

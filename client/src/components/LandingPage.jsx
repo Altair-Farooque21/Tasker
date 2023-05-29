@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import css from "../styles/LandingPage.module.css"
 import heroBg from "../assets/animations/landingpage/heroBlob.svg";
 import heroImg from "../assets/heroImg.png";
-import bell from "../assets/bell.png";
-import user from "../assets/user.png";
 
 import LandingPageFeatures from './common/LandingPageFeatures.jsx';
 import TestmonialSwiper from "./macro components/TestmonialSwiper.jsx";
@@ -20,9 +18,13 @@ import feat4Poly from "../assets/feat4Poly.png";
 import feat5Poly from "../assets/feat5Poly.png";
 
 import feat1Img from "../assets/feat1Img.png";
+import feat1img0 from "../assets/taskf2.png";
 import feat2Img from "../assets/feat2Img.png";
 import feat3Img from "../assets/feat3Img (1).png";
+import feat3Img0 from "../assets/feat3Img0.png"
 import feat4Img from "../assets/feat4Img (3).png";
+import feat4Img0 from "../assets/feat4Img0.png";
+import feat4Img1 from "../assets/feat4Img1.png";
 import feat5Img from "../assets/feat5Img.png";
 
 import socialImg1 from "../assets/facebook.png";
@@ -60,15 +62,10 @@ function LandingPage() {
                         </li>
                 </ul>
                 <div className={css.signUp}>
-                    
-                    <img src={bell} alt="bell" width={24} />
 
                     <button className={css.signUpBtn} onClick={handleSignup}>
                         Sign Up
                     </button>
-
-                    <img src={user} alt="user" width={32} />
-
 
                 </div>
             </nav>
@@ -106,6 +103,7 @@ function LandingPage() {
                 <div className={css.featbanner}>
                     <img src={feat1Poly} alt="" className={css.feat1Poly} width= "448"/>
                     <img className =  {css.feat1Img} src={feat1Img} width= "256" alt="" />
+                    <img className = {css.feat1Img0} src={feat1img0} alt="" height={60}/>
                 </div>
 
                 <LandingPageFeatures
@@ -130,6 +128,7 @@ function LandingPage() {
                 <div className={css.featbanner}>
                     <img src={feat3Poly} alt="" className={css.feat3Poly} width= "448"/>
                     <img className =  {css.feat3Img} src={feat3Img} width= "232" alt="" />
+                    <img className =  {css.feat3Img0} src={feat3Img0} width= "140" alt="" />
                 </div>
 
                 <LandingPageFeatures
@@ -147,6 +146,8 @@ function LandingPage() {
                 <div className={css.featbanner}>
                     <img src={feat4Poly} alt="" className={css.feat4Poly} width= "512"/>
                     <img className = {css.feat4Img} src={feat4Img} width= "256" alt="" />
+                    <img className = {css.feat4Img0} src={feat4Img0} width= "256" alt="" />
+                    <img className = {css.feat4Img1} src={feat4Img1} width= "256" alt="" />
                 </div>
 
                 
@@ -170,7 +171,9 @@ function LandingPage() {
             <p className={css.testLegend}>
                 {testimonials.title}
             </p>
-            <TestmonialSwiper />
+            <div className={css.testimonialSliderWrapper}>
+                    <TestmonialSwiper />
+            </div>
         </section>
 
         <section className={css.newsLetterContainer}>

@@ -10,7 +10,7 @@ userRouter.post('/signup',signup);
 
 userRouter.post('/signin',signin);
 
-userRouter.post('/send-verification-code',sendVerificationCode);
+userRouter.post('/send-Verification-Code',sendVerificationCode);
 
 userRouter.post('/code-verfication',verifyCodeFromClient);
 

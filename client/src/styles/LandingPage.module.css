@@ -6,7 +6,7 @@
     padding: 0;
 }
 .brand{
-    font-size:  1.25rem;
+    font-size:  20px;
     font-weight: 700;
     margin-left: 5%;
     margin: 0 10% 0% 7%;
@@ -31,6 +31,7 @@
     position: relative;
     top: 1.1vh;
     font-weight: 450;
+    font-size: 14px;
 }
 
 .signUpBtn{
@@ -42,6 +43,7 @@
     color: white;
     font-weight: 500;
     transition: all 0.25s ease-in-out;
+    font-size: 14px;
 }
 .signUpBtn:hover{
     transform: scale(0.97);
@@ -69,8 +71,8 @@
 }
 
 .heroLegend{
-    font-size: 52px;
-    font-weight: 620;
+    font-size: 50px;
+    font-weight: 630;
     position: relative;
     top: 15%;
     left:13%;
@@ -81,7 +83,7 @@
 }
 
 .heroSubtext{
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 450;
     position: relative;
     top: 15%;
@@ -140,33 +142,46 @@ Hero section done */
 }
 .featTitle{
     font-size: 36px;
-    font-weight: 600;
+    font-weight: 630;
     color: #181818;
     margin-bottom: 5vh;
 }
 
 .featuresGrid{
     display: grid;
+    width: 100%;
+    height: 100%;
     grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+    grid-auto-rows: max-content;
     justify-items: center; /* Center items horizontally in the grid */
     align-items: center; /* Center items vertically in the grid */
-    grid-row-gap: 4rem; /* Spacing between rows */
-    column-gap: 8vw;
+    grid-row-gap: 4vh; /* Spacing between rows */
+    column-gap: 4vw;
     position: relative;
 }
 
 .featbanner{
     position: relative;
-    align-self: center;
-    top:5vh;
-    margin: 8vh 0vh;
+    width: 70vh;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10vh 0vw;
 }
 .feat1Img{
     position: absolute;
-    left:15%;
-    top: 10%;
+    left:25%;
+    top: 20%;
     box-shadow: 4px 4px 16px  #d2baf1;
     border-radius: 16px;
+}
+.feat1Img0{
+    position: absolute;
+    left:3%;
+    top: 5%;
+    box-shadow: 4px 4px 16px  #d2baf1;
+    border-radius: 10px;
 }
 
 .feat2Img{
@@ -180,8 +195,15 @@ Hero section done */
     position: absolute;
     left:30%;
     top: 10%;
-    box-shadow: 4px 4px 16px  #bad2f1;
+    box-shadow: 4px 4px 20px  #bad2f1;
     border-radius: 16px;
+}
+.feat3Img0{
+    position: absolute;
+    left:0;
+    top: 0;
+    box-shadow: 4px 4px 20px  #bad2f1;
+    border-radius: 10px;
 }
 .feat4Img{
     position: absolute;
@@ -189,6 +211,18 @@ Hero section done */
     top: 20%;
     box-shadow: 4px 4px 32px  #d2baf1;
     border-radius: 16px;
+}
+.feat4Img0{
+    position: absolute;
+    left:0;
+    top: 0;
+    border-radius: 10px;
+}
+.feat4Img1{
+    position: absolute;
+    right:0;
+    bottom: 0;
+    border-radius: 10px;
 }
 .feat5Img{
     position: absolute;
@@ -202,7 +236,7 @@ Hero section done */
 .testimonialsContainer{
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -212,10 +246,22 @@ Hero section done */
 
 .testLegend{
     font-size: 36px;
-    font-weight: 600;
+    font-weight: 630;
+    color:#181818;
     width: 50vw;
     text-align: center;
     margin: 5vh 0vh;
+}
+
+.testimonialSliderWrapper{
+    position: relative;
+    width: 70%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
 }
 
 .newsLetterContainer{
@@ -229,7 +275,7 @@ Hero section done */
     position: relative;
 }
 .newsLetterContainer .nltitle{
-    width: 48vw;
+    width: 54vw;
     font-size: 38px;
     font-weight: 700;
     color: #181818;

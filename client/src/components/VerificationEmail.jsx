@@ -24,8 +24,14 @@ function VerificationEmail() {
     try {
       const code = formCode.join('');
       console.log({code:code});
-      // const response = await axios.post('/verification/verify', { code : code });
+      const response = await axios.post('/users/code-verfication', 
+                              { email : sessionStorage.getItem('email'),userCode : code },{
+                                headers: {
+                                            'Content-Type': 'application/json'
+                                         }
+                                        });
       // handle response from server
+      console.log(response);
     } catch (error) {
       // handle error from server
       console.error(error);
