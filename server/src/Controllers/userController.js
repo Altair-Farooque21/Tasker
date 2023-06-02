@@ -102,20 +102,20 @@ const sendVerificationCode = async (req,res)=>{
                 text: `Your verification code is : ${verificationCode}  \n this code expires in 10 mins`,
             }
             const sendCode = await sgMail.send(msg);
-            res.status(200).json({ message :"Verification code send Succefuuly",verifyStatus : "1001",})
+            res.status(200).json({ message :"Verification code send Succefuuly",verifyStatus : "1001",});
       }catch (error) {
         console.log(error);
-        res.status(500).json({message:"Error while sending code!"})
+        res.status(500).json({message:"Error while sending code!"});
       }
 }
 
 const resendVerificationCode = async (req,res)  =>{
       // in this filed we will try finding 
       // get existing verification code
-      const existEmail = req.body.email
+      const existEmail = req.body.email;
       const newCode = Math.floor(100000 + Math.random() * 900000);
       try {
-           const existCode = verifyModel.findOne({email:existEmail});
+           const existCode = await verifyModel.findOne({email:existEmail});
            // since its resend code we can send existing one or 
            // new code and send to the mail           
            existCode.code = newCode;
@@ -130,7 +130,7 @@ const resendVerificationCode = async (req,res)  =>{
             text: `Your verification code is : ${newCode}  \n this code expires in 10 mins`,
                         }
             const sendCode = await sgMail.send(msg);
-            res.status(200).json({ message :"Verification code send Succefuuly",verifyStatus : "2002",})
+            res.status(200).json({ message :"Verification code resend Succefuuly",verifyStatus : "2002",});
 
       } catch (error) {
         console.log(error);
@@ -142,18 +142,17 @@ const verifyCodeFromClient = async (req,res) =>{
       try {
         const result  = await verifyModel.findOne({email:email});
         if(result.code === userCode){
-            res.status(200).json({message:"Verification Successful" , verifyStatus : "0001",result:result});
+            res.status(200).json({message:"Verification Successful" , verifyStatus : "0001"});
         }
         else{
             res.status(404).json({
                 message : "Inavlid code",
                 verifyStatus : "0000",
-                result:result
             });
         }
       } catch (error) {
         console.log(error);
-        res.status(500).json({message:"Error while verifying code!"})
+        res.status(500).json({message:"Error while verifying code!"});
       }
 }
 

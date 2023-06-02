@@ -2,7 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 // .env configuration
-require("dotenv").config();
+const dotenv  = require("dotenv");
+dotenv.config();
 // routes modules
 const userRouter = require('./Routes/userRoutes');
 const notesRouter = require('./Routes/notesRoutes');
@@ -22,7 +23,6 @@ app.use('/notes',notesRouter);
 app.use('/tasks',taskRouter);
 app.use('/projects',projectRoutes);
 app.use('/track',trackRoutes);
-
 
 mongoose.connect('mongodb+srv://TaskerDB0863:AltairTaskerDB23@takserappcluster0863.jzoy9pb.mongodb.net/?retryWrites=true&w=majority')
 .then(()=>{

@@ -14,6 +14,6 @@ userRouter.post('/send-Verification-Code',sendVerificationCode);
 
 userRouter.post('/code-verfication',verifyCodeFromClient);
 
-userRouter.post('/resend-code',resendVerificationCode);`` 
+userRouter.post('/resend-code',resendVerificationCode);
 
 module.exports = userRouter;
