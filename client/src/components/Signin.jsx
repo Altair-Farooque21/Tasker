@@ -45,7 +45,6 @@ function Signin() {
     const userAuthentication = async (event) => {
         // prevents from refreshing the page on form submit
         event.preventDefault();
-        console.log(formData);
         try{
             // making a post request in axios to server
             const response = await axios.post('/users/signin',formData,{

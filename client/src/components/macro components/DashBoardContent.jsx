@@ -1,15 +1,35 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import css from './DashBoardContent.module.css';
 import person1 from "../../assets/person2.jpg";
+import projects from "../../assets/projects.png";
+import notes from "../../assets/sticky-note.png";
+import bell from "../../assets/notibell.png";
 import TasksDashboad from './Tasks/TasksDashboad';
 import NotesDashboard from './Notes/NotesDashboard';
+import Profile from '../Profile';
+import DashboardTrack from './DashboardTrack';
 
 function DashBoardContent() {
+
+    const [closeProfile,setcloseProfile] = useState(false);
+
+    const [showProfile,setshowProfile] = useState(false);
+
+    const handleProfileShow = () =>{
+          setcloseProfile(!closeProfile);
+          setshowProfile(!showProfile);
+    }
+    const handleProfileClose = () =>{
+          setcloseProfile(!closeProfile);
+    }
   return (
     <div className={css.contentWrapper}>
 
         <div className={css.tasksWrapper}>
-             <p className={css.tasksTitle}>Projects</p>
+             <div className={css.taskTitleWrap}>
+                 <p className={css.tasksTitle}>Projects</p>
+                 <img src={projects} alt=""  width={24}/>
+             </div>
              <div className={css.tasksContainer}>
                  {/* here goes the minimal card components */}
                  <TasksDashboad />
@@ -28,7 +48,10 @@ function DashBoardContent() {
             {/* notes section */}
 
             <div className={css.notesWrapper}>
-                <p className={css.notesTitle}>Notes</p>
+                <div className={css.notesTitleWrap}>
+                    <p className={css.notesTitle}>Notes</p>
+                    <img src={notes} alt="" width={24}/>
+                </div>
                 <div className={css.notesContainer}>
                      {/* here goes the notes minimal components */}
                      <NotesDashboard />
@@ -45,7 +68,7 @@ function DashBoardContent() {
                 <p className={css.trackTitle}>Track</p>
                 <div className={css.trackContainer}>
                      {/* here goes the tracks minimal components */}
-                     track card
+                     <DashboardTrack />
                 </div>
             </div>
 
@@ -54,9 +77,9 @@ function DashBoardContent() {
         <div className={css.profileWrapper}>
 
              <div className={css.profileWrap}>
-                   <img className={css.pfImg} src={person1} alt="" width={60}/>
+                   <img className={css.pfImg} src={person1} alt="" width={60} onClick={handleProfileShow}/>
                    <div className={css.profileContainer}>
-                        <p className={css.pfName}> Julia jane </p>
+                        <p className={css.pfName} onClick={handleProfileShow}> Julia jane </p>
                         <p className={css.pfProfession}> Project manager </p>
                         <p className={css.pfdate}> 4 / 05 </p>
                         <p className={css.pfday}> Wed</p>
@@ -69,7 +92,7 @@ function DashBoardContent() {
                   
                    <div className={css.notiWrap}>
                         <p className={css.msgTitle}> Notifications </p>
-                        <ion-icon name="notifications-outline"></ion-icon>
+                        <img src={bell} alt="" width={24}/>
                    </div>
 
                    <div className={css.msgSection}>
@@ -79,7 +102,9 @@ function DashBoardContent() {
              </div>
 
         </div>
-
+        <div className={`${css.profileViewContainer} ${showProfile ? css.show : ''} ${!closeProfile ? css.close : ''}`}>
+                <Profile closeProfile = {handleProfileClose}/>
+        </div>
     </div>
   );
 }

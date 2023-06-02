@@ -1,6 +1,6 @@
 import React ,{useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {checkUsername,checkEmail,checkPasswordStrength,comparePasswords} from "../utils/FormValidations/SignupValidations"
+import {checkUsername,checkEmail,validateFrom} from "../utils/FormValidations/SignupValidations";
 import axios from 'axios';
 
 import FormElement from './common/FromElement';
@@ -46,7 +46,7 @@ function Signup() {
   const onSignupSendVerificationCode = async ()=>{
         const email  = formData.email;
         try {
-          const response =  await axios.post('/users//send-Verification-Code',{email:email},{
+          const response =  await axios.post('/users/send-Verification-Code',{email:email},{
             headers: {
                 'Content-Type': 'application/json'
               }
@@ -59,15 +59,26 @@ function Signup() {
   // this will send form data to backend 
   // if user didn't exists and new user will registered 
   // then token will be returned as response from server or backend 
+  const sendSingUpFrom = (event) =>{
+      event.preventDefault()
+      let validatationCheck = validateFrom(formData,formErrors,setformErrors)
+      if(validatationCheck){
+        // console.log('checked')
+       }
+       else{
+        registerSignupEntry(event)
+       }
+  }
   const registerSignupEntry = async (event) => {
     // prevents from refreshing on form submit
     event.preventDefault();
-    console.log(formData);
+    // console.log(formData);
     const Data = {
       username: formData.userName,
       email: formData.email,
       password: formData.password,
     }
+    // comparing passwords before sending
     try{
        // making a post request in axios to server
         const response = await axios.post('/users/signup',Data,{
@@ -76,7 +87,7 @@ function Signup() {
                   }
               });
         // getting reponse from server both status and data
-        console.log(response.data); // Handle the response from the server
+        // console.log(response.data); // Handle the response from the server
         const jwtToken = response.data.token;
         const userId = response.data.user._id;
 
@@ -88,15 +99,10 @@ function Signup() {
           ...formErrors,
           userName: checkUsername(error.response.data.errorCode,formData.userName),
           email: checkEmail(error.response.data.errorCode,formData.email),
-          password: checkPasswordStrength(formData.password),
-          confirmPassword: comparePasswords(formData.password, formData.confirmPassword)
         }));
-        console.error(error);
+        console.error("Invalid form data");
       }
   };
-  
-
-
 
   return (
     <div className={css.mainWrapper}>
@@ -107,7 +113,7 @@ function Signup() {
           Sign Up for Our Task Management Tool
       </p>
       <div className={css.formWrapper}>
-          <form classname={css.formWrap} onSubmit={registerSignupEntry} >
+          <form className={css.formWrap} method="POST" onSubmit={sendSingUpFrom} >
          
                   <div className={css.formTopWrap}>
 
@@ -153,7 +159,7 @@ function Signup() {
           
                   </div>
                   <div className={css.formSubWrap}>
-                    <button className = {css.formSubmitBtn} type='submit'> Join Now </button>
+                    <button className = {css.formSubmitBtn} type='submit' > Join Now </button>
                   </div>
             </form>
       </div>

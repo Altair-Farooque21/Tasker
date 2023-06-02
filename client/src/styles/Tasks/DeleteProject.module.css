@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --theme :#8F43EE;
+    --bg-container: #f4f4f4;
+}
+
+
+.container{
+    width: 35vw;
+    height: 45vh;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.title{
+    width: 24vw;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.actionBtns{
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cancelBtn{
+    width: 10vw;
+    height: 4.5vh;
+    border: 2px solid rgb(202, 202, 202);
+    border-radius: 8px;
+    background-color: white;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.25s ease-in-out;
+    margin-left: 2rem;
+}
+
+.deleteBtn{
+    width: 10vw;
+    height: 4.5vh;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(224, 26, 26);
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    margin-right: 2rem;
+    transition: all 0.25s ease-in-out;
+}
+
+.actionBtns button:hover{
+    transform: scale(0.97);
+    
+}

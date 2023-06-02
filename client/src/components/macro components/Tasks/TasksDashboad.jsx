@@ -18,9 +18,9 @@ function TasksDashboad() {
         <div className={css.tdBtmContainer}>
             <div className={css.tdTeams}>
                 {/* img stack of teams profile pics */}
-                <img src={person1} alt="" width={30} />
-                <img src={person2} alt="" width={30} />
-                <img src={person3} alt="" width={34} />
+                <img src={person1} alt="" width={24} />
+                <img src={person2} alt="" width={24} />
+                <img src={person3} alt="" width={24} />
                 <p> +3 </p>
             </div>
             <div className={css.tdTasks}>

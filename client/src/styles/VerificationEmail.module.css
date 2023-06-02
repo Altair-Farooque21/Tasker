@@ -70,3 +70,9 @@
 .resendCode:hover{
     text-decoration: underline;
 }
+
+.error{
+    font-size: 15px;
+    font-weight: 530;
+    color: red;
+}

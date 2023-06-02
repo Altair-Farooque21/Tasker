@@ -1,36 +1,36 @@
-const checkUsername = (status,data) =>{
+export function checkUsername(status,data){
     if(status === 'register.usernameExists'){
         return "Username already exists"
     }
     else if(data === ''){
-        return "Please enter required field!"
+        return "Please enter username"
     }
     else{
         return ''
     }
 }
 
-const checkEmail = (status,data)=>{
+export function  checkEmail(status,data){
     if(status === 'register.emailExists'){
-        return "this Email is already in-use"
+        return "This email is already in-use"
     }
     else if(data === ''){
-      return "Please enter required field!"
+      return "Please enter your email"
   }
     else{
         return ''
     }
 }
 
-const checkPasswordStrength = (password) => {
+export function  checkPasswordStrength(password){
     const hasCapitalLetter = /[A-Z]/.test(password);
     const hasLowerCaseLetter = /[a-z]/.test(password);
     const hasNumber = /[0-9]/.test(password);
     const hasSpecialCharacter = /[^A-Za-z0-9]/.test(password);
-    const hasPasswordLength  = (password.length <= 8) ? true : false
+    const hasPasswordLength  = (password.length < 8) ? true : false
 
     if(password === ''){
-        return "Please enter required field!"
+        return "Please enter your password"
     }
 
     if(hasPasswordLength){
@@ -49,16 +49,88 @@ const checkPasswordStrength = (password) => {
     }
   }
 
-const comparePasswords  = (pwd,cpwd) =>{
+export function  comparePasswords(pwd,cpwd){
       if(cpwd === ''){
-        return "Please enter required field!"
+        return "Please re-enter your password";
       }
       else if(!(pwd === cpwd)){
-        return "password must be same"
+        return "Password must be same"
       }
       else{
         return ''
       }
 }
 
-module.exports = {checkUsername,checkEmail,checkPasswordStrength,comparePasswords}
+export function  validateFrom(formData,formErrors,setformErrors){
+  let hasErrors = false
+   // check username ✅
+   if(formData.userName === ''){
+      setformErrors(formErrors => ({
+        ...formErrors,
+        userName: checkUsername('',formData.userName)
+      }));
+      hasErrors = true
+   }
+   else{
+    setformErrors(formErrors => ({
+      ...formErrors,
+      userName: checkUsername(formData.userName,formData.userName)
+    }));
+      hasErrors = false
+   }
+   // check email ✅
+   if(formData.email === ''){
+    setformErrors(formErrors => ({
+      ...formErrors,
+      email: checkEmail('',formData.email)
+    }));
+    hasErrors = true
+   }
+   else{
+    setformErrors(formErrors => ({
+      ...formErrors,
+      email: checkEmail('',formData.email)
+    }));
+    hasErrors = false
+   }
+   // check passwaord ✅
+   if(formData.password === ''){
+    setformErrors(formErrors => ({
+      ...formErrors,
+      password: checkPasswordStrength('')
+    }));
+    hasErrors = true
+   }
+   else if(formData.password !== ''){
+    setformErrors(formErrors => ({
+      ...formErrors,
+      password: checkPasswordStrength(formData.password)
+    }));
+    hasErrors = false
+   }
+   // check cpassword
+   if(formData.confirmPassword === ''){
+    setformErrors(formErrors => ({
+      ...formErrors,
+      confirmPassword: comparePasswords('',formData.confirmPassword)
+    }));
+    hasErrors = true
+   }
+   else if(!(formData.password === formData.confirmPassword)){
+    setformErrors(formErrors => ({
+      ...formErrors,
+      confirmPassword: comparePasswords(formData.password,formData.confirmPassword)
+    }));
+    hasErrors = true
+   }
+   else{
+    setformErrors(formErrors => ({
+      ...formErrors,
+      confirmPassword: comparePasswords(formData.password,formData.confirmPassword)
+    }));
+    hasErrors = false
+   }
+   return hasErrors
+}
+
+// module.exports = {checkUsername,checkEmail,checkPasswordStrength,comparePasswords,validateFrom}

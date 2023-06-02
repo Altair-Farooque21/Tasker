@@ -1,10 +1,49 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import css from "../../../styles/Tasks/AddTaskOverlay.module.css";
-import AddTaskBtn from './AddTaskBtn';
 import closeIcon from "../../../assets/close.png";
 
 
-function AddTaskOverlay({onClose}) {
+function AddTaskOverlay({onClose ,modeType}) {
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const [teamValue, setteamValue]  = useState('')
+  const [teamValues, setteamValues] = useState([]);
+  const [mode,setMode] = useState(modeType);
+
+
+  const [projectData,setProjectData] = useState({
+      title : '',
+      description :"",
+      startDate : '',
+      dueDate : '',
+  })
+
+  const handleProjectData = (e) =>{
+    const {name, value} = e.target;
+    setProjectData((projectData) =>({
+      ...projectData,[name]:value
+    }))
+  }
+
+  const handleAddbtn = () =>{
+    console.log(projectData,teamValues);
+  }
+
+  const handleTeamData =(e)  =>{
+    if (e.key === "Enter") {
+      setteamValues((teamValues) => {
+        const newValue = [...teamValues, teamValue];
+        return newValue;
+      });
+      setteamValue('')
+    }
+  }
+
+  // conditional rendering components
+  useEffect(()=>{
+      setMode(modeType);
+  },[modeType]);
+
   return (
     <div className={css.addTapWrapper}>
         <div className={css.leftContainer}>
@@ -13,7 +52,11 @@ function AddTaskOverlay({onClose}) {
              <p className={css.title}>
                  Title
              </p>
-             <input type="text" placeholder='Website Design' className={css.titleInput} />
+             <input value = {projectData.title}
+                    name = "title"
+                    type="text"
+                    placeholder='Website Design'
+                    className={css.titleInput} onChange={handleProjectData}/>
       
           </div>
 
@@ -21,44 +64,63 @@ function AddTaskOverlay({onClose}) {
              <p className={css.desc}>
                  Description
              </p>
-             <textarea type="textarea" className={css.descInput} />
+             <textarea value = {projectData.description}
+                       name = "description"
+                       type="textarea"
+                       className={css.descInput} onChange={handleProjectData}/>
       
           </div>
 
-          <div className={css.subWrap}>
-             <p className={css.subTask}>
-                 Sub-task
-             </p>
-             <AddTaskBtn name="Tap to add" tip= "Its better to break down your task into sub -tasks for better tracking  of your progress"/>
+          <div className={css.teamsWrap}>
+            <p className={css.teams}> Teams <span>( Optional )</span></p>
+            <input value = {teamValue}
+                   name = "teams"
+                   type="text"
+                   placeholder='username or email'
+                   onChange={(e)=>{setteamValue(e.target.value)}}
+                   onKeyDown={handleTeamData}/>
+            <p className={css.teamTip}>Get things don faster, by collaborating with other. Add your team now ( Max 5 members )</p>
           </div>
 
       
         </div>
 
         <div className={css.rightContainer}>
-          
-          <div className={css.teamsWrap}>
-            <p className={css.teams}> Teams </p>
-            <AddTaskBtn name="Add member" tip= "Get things done faster by collabrating with others , add them now"/>
-          </div>
 
+        <div className={css.startWrapper}>
+             <p className={css.start}> Start</p>
+             <input value = {projectData.startDate}
+                    name = "startDate"
+                    type="date"
+                    onChange={handleProjectData}
+                    />
+          </div>
+          
           <div className={css.dueWrapper}>
              <p className={css.due}>Deadline</p>
-             <AddTaskBtn name="Add deadline" tip= "Deadlines will really motivate you to get things done and get you organised ."/>
+             <input value = {projectData.dueDate}
+                    name = "dueDate"
+                    type="date"
+                    onChange={handleProjectData}
+                    />
           </div>
 
           <div className={css.priorWrap}>
             <p className={css.priority}>Priority <span>( Optional )</span></p>
-            <div className={css.priorBtnWrap}>
-               <button>High</button>
-               <p> Customize your priority for most important tasks </p>
+            <div className={css.priorSelectWrap}>
+              <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
+                <option value="">Priority...</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
             </div>
           </div>
 
         </div>
 
         <div className={css.submitWrap}>
-           <button> Add </button>
+           <button onClick={handleAddbtn}> {mode === 'create' ? "Add" : "Save Changes"} </button>
         </div>
             <img className = {css.closeOverlay} src={closeIcon} alt="" width={24}  onClick={onClose}/>
     </div>

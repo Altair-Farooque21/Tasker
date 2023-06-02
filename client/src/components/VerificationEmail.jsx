@@ -1,5 +1,6 @@
 import React, { useState,useRef } from 'react';
 import css from "../styles/VerificationEmail.module.css";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function VerificationEmail() {
@@ -7,6 +8,10 @@ function VerificationEmail() {
   const [formCode ,setFormCode] = useState(['','','','','','']);
   // asssigning refs for move next
   const inputRefs = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
+  const [Error,setError ] = useState('');
+
+   // for navigating through routes
+   const navigate = useNavigate();
 
   const handleDigitChange = (index, value) => {
     const newDigits = [...formCode];
@@ -18,12 +23,21 @@ function VerificationEmail() {
       inputRefs[nextIndex].current.focus(); // Move to the next input field
     }
   };
+
+  const clearInputFields = () => {
+    const clearedDigits = formCode.map(() => '');
+    setFormCode(clearedDigits);
+  
+    for (let index = 0; index < inputRefs.length; index++) {
+      inputRefs[index].current.value = '';
+    }
+  };
   
   const checkVerificationCode = async (event)=>{
     event.preventDefault();
     try {
       const code = formCode.join('');
-      console.log({code:code});
+      // console.log({code:code});
       const response = await axios.post('/users/code-verfication', 
                               { email : sessionStorage.getItem('email'),userCode : code },{
                                 headers: {
@@ -31,9 +45,11 @@ function VerificationEmail() {
                                          }
                                         });
       // handle response from server
-      console.log(response);
+      navigate('/dashboard',{ replace:true });
     } catch (error) {
       // handle error from server
+      setError('Invalid code');
+      clearInputFields()
       console.error(error);
     }
   }
@@ -41,8 +57,13 @@ function VerificationEmail() {
   const resendVerificationCode = async (event)=>{
     event.preventDefault();
     try{
-      // const response = await axios.get('/verification/resend',{msg:'resend'});
-      // handle reponse from server
+      const response = await axios.post('/users/resend-code',{ email : sessionStorage.getItem('email') },{
+        headers: {
+                    'Content-Type': 'application/json'
+                 }
+                });
+      clearInputFields();
+      setError('');
     }
     catch (error){
       console.error(error);
@@ -71,7 +92,7 @@ function VerificationEmail() {
                       />
               ))}
               </div>
-            <p className={css.error}></p>
+            <p className={css.error}>{Error}</p>
             <button className={css.verifyBtn} type='submit'>Verify</button>
         </form>
       <p className={css.resendCode} onClick={resendVerificationCode}>Resend code</p>

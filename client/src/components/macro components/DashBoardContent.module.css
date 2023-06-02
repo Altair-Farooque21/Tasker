@@ -24,21 +24,32 @@
     width: 32vw;
     height: 100%;
     position: relative;
+    overflow-y: hidden;
     
 }
 
-.tasksTitle{
-    padding: 0rem 1rem;
-    font-size: 20px;
-    font-weight: 500;
-    position: absolute;
-    left: 0;
-    top:0;
-}
+.tasksWrapper::-webkit-scrollbar { width: 0 !important }
 
+.tasksTitle{
+    margin: 0rem 0rem;
+    padding: 0rem 0rem;
+    font-size: 20px;
+    font-weight: 550;
+}
+.taskTitleWrap{
+    width: 100%;
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 1rem;
+}
+.taskTitleWrap img{
+    margin-left: 1rem;
+}
 .tasksContainer{
     width: 30vw;
-    height: 92%;
+    height: 91%;
     border-radius: 12px;
     background-color: var(--bg-container);
     position: relative;
@@ -49,11 +60,10 @@
 
 .tasksContainer::-webkit-scrollbar { width: 0 !important }
 
-
 .ntWrapper{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     width: 28vw;
     height: 100%;
@@ -63,16 +73,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 26vw;
     height: 48%;
     position: relative;
 }
+.notesTitleWrap{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 1rem;
+    margin-bottom: 1rem;
+}
+.notesTitleWrap img{
+    margin-left: 1rem;
+}
 .notesTitle{
-    position: relative;
-    left: -35%;
+    margin: 0;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 530;
     padding: 0;
 }
 .notesContainer{
@@ -82,6 +102,7 @@
     height: 85%;
     scroll-behavior: smooth;
     padding: 0.5rem 1rem;
+    transition: all 0.25s ease-in-out;
 }
 .notesContainer::-webkit-scrollbar { width: 0 !important }
 
@@ -100,7 +121,7 @@
     left: -35%;
     top:0;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 550;
     padding: 0;
 }
 
@@ -110,11 +131,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--bg-container);
+    background-color: white;
     border-radius: 12px;
     width: 24vw;
-    height: 85%;
+    height: 80%;
     scroll-behavior: smooth;
+    box-shadow: 2px 2px 20px rgb(215, 215, 215);
+    border: 1px solid var(--bg-container);
 }
 
 .profileWrapper{
@@ -155,16 +178,26 @@
     border-radius: 30px;
     z-index: 2;
     cursor: pointer;
-    border: 8px solid white;
+    border:4px solid white;
+    transition: all 0.25s ease-in-out;
+
+}
+.pfImg:hover{
+    border:4px solid #8F43EE;
+    transform: translateY(-0.25rem);
 
 }
 .profileContainer .pfName{
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 530;
     position: relative;
     top: 1rem;
+    cursor: pointer;
 }
-
+.pfName:hover{
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
 .pfProfession{
     font-size: 14px;
     font-weight: 500;
@@ -174,19 +207,19 @@
 .pfdate{
     color: var(--theme);
     font-size: 32px;
-    font-weight: 500;
+    font-weight: 530;
 }
 
 .pfday{
     color: var(--theme);
     font-size: 26px;
-    font-weight: 500;
+    font-weight: 530;
     position: relative;
     top: -1rem;
 }
 .pfLegend{
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 530;
     color: #1D8FF9;
 }
 .messageConatiner{
@@ -203,13 +236,12 @@
     align-items: center;
     width: 90%;
 }
-.notiWrap ion-icon{
-    font-size: 20px;
-    margin: 0rem 1rem;
+.notiWrap img{
+    margin-left: 0.5rem;
 }
 .msgTitle{
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 550;
     margin: 0 4px;
 }
 .msgSection{
@@ -222,4 +254,21 @@
     position: relative;
     border-radius: 12px;
     background-color: var(--bg-container);
+}
+
+.profileViewContainer{
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 27%;
+    height: 100%;
+    z-index: 2;
+}
+
+.show{
+    display: visible;
+}
+
+.close{
+    display: none;
 }

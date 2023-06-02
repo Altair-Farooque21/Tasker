@@ -18,6 +18,7 @@
     transition: 0.25s transform ease-in-out;
     border: 1px solid rgb(225, 225, 225);
     transition: all 0.25s ease-in-out;
+    background-color: white;
 }
 .noteCardContainer:hover{
     cursor: pointer;

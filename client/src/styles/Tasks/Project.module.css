@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     --theme :#8F43EE;
-    --bg-container: #f7f7f7;
+    --bg-container: #f9f9f9;
 }
 
 .mainContainer{
@@ -20,7 +20,7 @@
 
 .projectInfoWrapper{
     width: 97%;
-    height: 45%;
+    height: 40%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -35,7 +35,7 @@
     justify-content: center;
     align-items: flex-start;
     width: 55%;
-    height: 90%;
+    height: 80%;
 }
 .projectTitle{
     font-size: 22px;
@@ -65,6 +65,10 @@
     justify-content: center;
     width: 50%;
 }
+.projectStartWrap p{
+    font-size: 15px;
+    font-weight: 530;
+}
 .projectstartDate{
     font-size: 16px;
     color: #4390ee;
@@ -77,7 +81,10 @@
     justify-content: center;
     width: 50%;
 }
-
+.projectDueWrap p{
+    font-size: 15px;
+    font-weight: 530;
+}
 .projectTeamsWrap{
     display: flex;
     align-items: center;
@@ -102,12 +109,22 @@
     color: white;
     border-radius: 20px;
 }
+
+.projectpriorityWrap p{
+    font-size: 15px;
+    font-weight: 530;
+}
 .projectTeamWrap{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 50%;
+}
+
+.projectTeamWrap p{
+    font-size: 15px;
+    font-weight: 530;
 }
 .projectUtilWrapper{
     width: 97%;
@@ -137,9 +154,10 @@
     height: 100%;
 }
 .subtaskTitle{
-    font-size: 20px;
+    font-size: 18px;
     overflow: hidden;
-    font-weight: 600;
+    font-weight: 650;
+    margin-left: 1rem;
     /* position: relative;
     left:-40%;
     top:0; */
@@ -168,9 +186,10 @@
 }
 
 .topicsTitle{
-    font-size: 20px;
+    font-size: 18px;
     overflow: hidden;
-    font-weight: 600;
+    font-weight: 650;
+    margin-left: 1rem;
 }
 
 .subTaskAddBtn{

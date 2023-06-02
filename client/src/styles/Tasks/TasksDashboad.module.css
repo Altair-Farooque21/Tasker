@@ -33,14 +33,14 @@
 }
 
 .tdTitlee{
-    font-size: 17px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 530;
     color: #181818;
 }
 
 .tdDuedate{
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 530;
     color: #1D8FF9;
 }
 
@@ -55,9 +55,10 @@
     border-radius: 20px;
 }
 .tdBtmContainer p{
-    margin: 0rem 1rem;
-    font-size: 15px;
-    font-weight: 500;
+    margin: 0rem 0.5rem;
+    font-size: 14px;
+    font-weight: 530;
+    color: rgb(113, 110, 110);
 }
 .tdTeams{
     display: flex;
@@ -66,7 +67,7 @@
 }
 
 .tdTasks{
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 530;
     color: rgb(160, 160, 160);
 }

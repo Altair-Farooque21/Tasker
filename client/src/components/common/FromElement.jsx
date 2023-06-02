@@ -38,6 +38,10 @@ const FormElement = ({ label,icon,err,type,placeholer, name, value, onChange }) 
     onChange(name, value);
   };
 
+  const doNone = ()=>{
+     let s = 0;
+  }
+
   return (
     <div className={css.mainContainer}>
       <p className={css.Label}> {label} </p>
@@ -46,7 +50,7 @@ const FormElement = ({ label,icon,err,type,placeholer, name, value, onChange }) 
              <input type={type} id={name} ref={inputRef} name={name} placeholder={placeholer} value={value} onChange={handleChange} /> :
              <input type={type} id={name} name={name} placeholder={placeholer} value={value} onChange={handleChange} /> }
            
-            <img className = {css.inputIcon} src={toggleIcon} alt="" width={22} onClick={isPassword ? toggleView : ''}/>
+            <img className = {css.inputIcon} src={toggleIcon} alt="" width={22} onClick={isPassword ? toggleView : doNone}/>
       </div>
       <p className={css.error}>
          {err}
