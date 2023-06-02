@@ -14,25 +14,25 @@ function Notes() {
   const [noteCount,setnoteCount] = useState(0);
   const [data , setData] = useState(null);
 
-  useEffect(()=>{
-    const fetchData = async () =>{
-      console.log(userID);
-      try {
-        const res = await axios.get('/notes/',{userID:userID},{
-          headers: {
-              'Content-Type': 'application/json'
-            }
-        });
-        setData(res.data);
-        console.log(res);
+  // useEffect(()=>{
+  //   const fetchData = async () =>{
+  //     console.log(userID);
+  //     try {
+  //       const res = await axios.get('/notes/',{userID:userID},{
+  //         headers: {
+  //             'Content-Type': 'application/json'
+  //           }
+  //       });
+  //       setData(res.data);
+  //       console.log(res);
         
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchData();
-    console.log(data);
-  },[]);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   fetchData();
+  //   console.log(data);
+  // },[]);
 
   const handleCardClick = (id) => {
     setcardId(id);
