@@ -1,0 +1,182 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --theme :#8F43EE;
+    --bg-container: #f4f4f4;
+}
+
+.container{
+    width: 28vw;
+    height: 90%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.Wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.addTitleWrap ,.addDescription{
+    width: 80%;
+    height: 11vh;
+}
+.addTitleWrap {
+    position: relative;
+    top: 3rem;
+}
+
+.addDescription  {
+    position: relative;
+    top: 3.5rem;
+}
+.title{
+    font-size: 14px;
+    font-weight: 530;
+    color: rgb(106, 106, 106);
+}
+.addDescription p span ,.startWrapper p span,.dueWrapper p span{
+    font-size: 13px;
+    font-weight: 450;
+    color: rgb(192, 192, 192);
+}
+.addTitleWrap input ,.addDescription input{
+    height: 4.5vh;
+    width: 90%;
+    background-color: #efefef;
+    border: none;
+    border-radius: 10px;
+    padding-left: 1rem;
+    font-size: 14px;
+}
+
+.addTitleWrap input:focus,.addDescription input:focus{
+    outline: none !important;
+}
+
+.timeWrapper{
+    width: 80%;
+    height: 14vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    top: 3.5rem;
+}
+
+.startWrapper input,.dueWrapper input{
+    border: none;
+    width: 10vw;
+    height: 4.5vh;
+    background-color: #efefef;
+    padding: 0rem 1rem;
+    font-size: 14px;
+    border-radius: 8px;
+    font-weight: 450;
+    cursor: pointer;
+}
+
+.startWrapper input:focus,.dueWrapper input:focus{
+    outline: none !important;
+}
+
+.taskWrapper{
+    width: 80%;
+    position: relative;
+    max-height: 30vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    position: relative;
+    top: 3.5rem;
+}
+.taskWrapper::-webkit-scrollbar{
+    width: 4px;
+    background-color: #efefef;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #8F43EE;
+}
+.taskLegend{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.taskLegend p{
+    font-size: 16px;
+    font-weight: 530;
+    color: rgb(106, 106, 106);
+}
+
+.addNewTaskBtn{
+    font-size: 14px;
+    font-weight: 530;
+    color: var(--theme);
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+.addNewTaskBtn:hover{
+    text-decoration: underline;
+}
+.actionBtns{
+    width: 80%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    position: absolute;
+    bottom: 2rem;
+}
+.actionBtns button{
+    width: 9vw;
+    height: 4vh;
+    font-size: 13px;
+    font-weight: 530;
+    border-radius: 8px;
+    transition: all 0.25s ease-in-out;
+}
+
+.actionBtns button:hover{
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.cancelBtn{
+    background-color: white;
+    border: 1px solid #323232;
+}
+
+.addBtn{
+    background-color: var(--theme);
+    border: 1px solid var(--theme);
+    color: white;
+}
+
+.deleteBtn{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+}
+/* View styles */
+
+.titleValue ,.descValue{
+    font-size: 14px;
+    font-weight: 430;
+    color: black;
+}
+
+.startValue,.dueValue{
+    font-size: 14px;
+    font-weight: 530;
+    color: black;
+}

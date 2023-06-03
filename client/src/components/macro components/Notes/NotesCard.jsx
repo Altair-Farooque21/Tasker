@@ -4,14 +4,13 @@ import css from "../../../styles/Notes/NotesCard.module.css";
 function NotesCard({cid,color,title,note,cDate,handleClick}) {
   const containerRef = useRef(null);
   const colorCode = color;
-  const cardId = cid;
 
   useEffect(()=>{
     containerRef.current.style.backgroundColor = colorCode;
   },[colorCode]);
 
   return (
-    <div className={css.noteCardContainer} ref={containerRef} style={{ isolation: 'isolate' }} onClick={()=> handleClick(cardId)}>
+    <div className={css.noteCardContainer} ref={containerRef} style={{ isolation: 'isolate' }} onClick={() => handleClick(cid)}>
          <p className={css.title}>
              Web design tips
          </p>
@@ -20,7 +19,6 @@ function NotesCard({cid,color,title,note,cDate,handleClick}) {
          </p>
          <div className={css.editWrap}>
             <p className={css.createDate}> 05 fri , 2023 </p>
-            <ion-icon name="create-outline"></ion-icon>
          </div>
     </div>
   )

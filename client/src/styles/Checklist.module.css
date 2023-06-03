@@ -51,3 +51,30 @@
 .ChecklistWrapper ion-icon:hover{
     transform: scale(0.9);
 }
+
+.AddFAB{
+    position: absolute;
+    right: 5rem;
+    bottom: 5rem;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.AddFAB:hover{
+    transform: scale(0.92);
+}
+
+.addCheclistOverlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+}
+
+.close{
+    display: none;
+}

@@ -14,7 +14,25 @@ function Notes() {
   const [noteCount,setnoteCount] = useState(0);
   const [data , setData] = useState(null);
 
-  // useEffect(()=>{
+  const handleAddNote = () =>{
+    setcardId('');
+    setcardClose(!cardClose);
+    setaddNote(!addNote);
+  }
+
+
+  const handleCardClick = (id) => {
+    setcardId(id)  // this sets card id from the reference card which was clicked
+    setcardClose(!cardClose); // this one toggles close --> ' '
+    setaddNote(!addNote);  // this one toggles ' ' --> show ( Optional but efficient)
+    console.log(cardId)
+  };
+
+  const handleCloseBtn = ()=>{
+        setcardClose(!cardClose);
+  }
+
+    // useEffect(()=>{
   //   const fetchData = async () =>{
   //     console.log(userID);
   //     try {
@@ -34,31 +52,21 @@ function Notes() {
   //   console.log(data);
   // },[]);
 
-  const handleCardClick = (id) => {
-    setcardId(id);
-    setcardClose(!cardClose);
-    setaddNote(!addNote);
-    console.log(cardId);
-  };
 
-  const handleCloseBtn = ()=>{
-        setcardClose(!cardClose);
-  }
-
-  const handleAddNote = () =>{
-    // to remove close property
-    setcardId('');
-    setcardClose(!cardClose);
-    setaddNote(!addNote);
-  }
   return (
     <div className={css.notesContainer}>
+
+       {/* Notes container */}
        <div className={css.notesWrapper}>
-       <NotesCard />
+            <NotesCard cid={'3423'} handleClick = {handleCardClick}/>
        </div>
-      
+
+       {/* {Add / create note button} */}
+       {/* FAB tests passed ✅ */}
        <img onClick ={handleAddNote} className={css.AddFAB} src={addFab} alt="" width={56} color='white'/>
 
+       {/* Add note overlay pop-up container */}
+       {/* Overlayy tests passed ✅ */}
        <div className={`${css.addNotesComponent} ${addNote ? css.show : ''} ${!cardClose ? css.close : ''}  `}>
              <AddNotes handleClose={handleCloseBtn} uid = {userID} cid ={cardId}/>
        </div>

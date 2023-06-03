@@ -1,0 +1,45 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    --theme :#8F43EE;
+    --bg-container: #f4f4f4;
+}
+
+
+.container{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 1rem 0rem;
+}
+
+.checkBox{
+    width: 14px;
+    height: 14px;
+}
+
+.taskname{
+    width: 100%;
+    height: 4vh;
+    border: none;
+    border-bottom: 2px solid var(--theme);
+    background-color: #f4f4f4;
+    margin-left: 1rem;
+    padding-left: 0.5rem;
+    font-size: 14px;
+    font-weight: 430;
+}
+
+.taskname:focus{
+    outline: none !important;
+}
+
+.task{
+    margin: 0rem 0rem;
+    font-size: 14px;
+    font-weight: 530;
+    margin-left: 1rem;
+    cursor: pointer;
+}

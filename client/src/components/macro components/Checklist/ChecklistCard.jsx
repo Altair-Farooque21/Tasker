@@ -1,12 +1,11 @@
 import React from 'react';
 import css from '../../../styles/Checklist/ChecklistCard.module.css';
-import edit from "../../../assets/edit.png";
 import reminder from "../../../assets/reminder.png";
 import bookmark from "../../../assets/bookmark.png";
 
-function ChecklistCard() {
+function ChecklistCard({cardClicked}){  
   return (
-    <div className={css.ccWrapper}>
+    <div className={css.ccWrapper} onClick={cardClicked}>
           <p className={css.ccTitle}>
                API Integration
           </p>
@@ -29,7 +28,6 @@ function ChecklistCard() {
                <p className={css.cDate}>
                   05 mon , 2023
                </p>
-               <img src={edit} alt=""  width={20}/>
           </div>
     </div>
   )

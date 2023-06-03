@@ -8,19 +8,18 @@ import { getCreateDate } from '../../../utils/notesUtils';
 function addNotes({handleClose,uid,cid}) {
    // getting and setting input values
    const [noteData,setNoteData] = useState({ title : '',note : ''});
-   const [mode,setmode] = useState('');
+   const [mode,setmode] = useState('Create');
    const userID = uid;
-   const [cardID ,setcardID] = useState('');
    const color = "#a06cdf";
+
    useEffect(()=>{
-        setcardID(cid);
-        if(cardID === ''){
-        setmode('Create');
-        }
-        else{
+        if(!(cid === '')){
         setmode('Update');
         }
-   },[cardID]);
+        else{
+          setmode("Create");
+        }
+   },[cid]);
    
 
    const handleInputChange = (e) => {
@@ -65,6 +64,7 @@ function addNotes({handleClose,uid,cid}) {
   
   return (
     <div className={css.Container}>
+      <p> {cid} </p>
         <div className={css.titleWrapper}>
             <p className={css.title}>
                 Title

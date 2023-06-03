@@ -18,6 +18,7 @@
     padding: 0.5rem;
     background-color: #c3ff82;
     box-shadow: 2px 2px 20px rgb(232, 232, 232);
+    cursor: pointer;
 }
 
 .ccTitle{
@@ -61,13 +62,6 @@
     align-items: center;
     justify-content: space-between;
     width: 11vw;
-}
-.created img{
-    transition: all 0.25s ease-in-out;
-}
-.created img:hover{
-    transform: scale(0.95);
-    cursor: pointer;
 }
 .cDate{
     font-size: 13px;
