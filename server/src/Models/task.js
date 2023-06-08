@@ -11,26 +11,27 @@ const taskSchema = moongose.Schema({
     },
     title: {
         type:String,
-        require: true
+        required: true
     },
     description: {
         type:String,
-        require: true
     },
-    subtasks:{
+    subTasks:{
         type: [String]
     },
     colorCode:{
         type: String,
         required:true
     },
-    creatDate:{
+    createDate:{
         type: String,
         required:true
     },
-    deadLine:{
+    startDate :{
         type: String,
-        required:true
+    },
+    dueDate:{
+        type: String,
     }
 })
 

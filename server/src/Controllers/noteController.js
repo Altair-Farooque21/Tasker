@@ -2,17 +2,17 @@ const noteModel = require('../Models/notes');
 
 // API end point checked ✅ successfully
 const createNote = async (req,res) =>{
-    const {userID,title,description,colorCode,creatDate} = req.body;
+    const {userID,title,notes,colorCode,creatDate} = req.body;
     const note = new noteModel({
         userID: userID,
         title: title,
-        description:description,
+        notes: notes,
         colorCode:colorCode,
         creatDate:creatDate,
     })
     try {
         await note.save();
-        res.status(201).json({noteID :note._id,note});
+        res.status(201).json({message : "this message from server with code 200"});
     } catch (error) {
         console.log(error);
         res.status(500).json({message: "Something Went Wrong"});
@@ -21,9 +21,20 @@ const createNote = async (req,res) =>{
 
 // API end point checked ✅ successfully
 const getNote = async (req,res) =>{
-    const userID = req.body.userID; // needs to update once the middlewares are implemented
+    const userID = req.params.userID; // needs to update once the middlewares are implemented
     try {
         const notes = await noteModel.find({userID : userID});
+        res.status(200).json(notes);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message: "Something Went Wrong"});
+    }
+}
+
+const getNoteByID = async (req,res) =>{
+    const noteID = req.params.noteID; // needs to update once the middlewares are implemented
+    try {
+        const notes = await noteModel.findById({ _id : noteID});
         res.status(200).json(notes);
     } catch (error) {
         console.log(error);
@@ -70,6 +81,7 @@ const deleteNote = async (req,res) =>{
 module.exports = {
     createNote,
     getNote,
+    getNoteByID,
     deleteNote,
     updateNote
 }

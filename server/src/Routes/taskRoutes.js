@@ -3,14 +3,17 @@ const taskRouter = express.Router();
 const {
     createTask,
     getTask,
+    getNote,
     deleteTask,
     updateTask
 } = require('../Controllers/taskController');
 
 
-taskRouter.get('/',getTask);
+taskRouter.get('/gettasks/:userID',getTask);
 
-taskRouter.post('/',createTask);
+taskRouter.get('/gettasks/notes/:taskID',getNote);
+
+taskRouter.post('/addTask',createTask);
 
 taskRouter.put('/:taskID',updateTask);
 

@@ -13,7 +13,7 @@ const noteSchema = moongose.Schema({
         type:String,
         require: true
     },
-    description: {
+    notes: {
         type:String,
         require: true
     },

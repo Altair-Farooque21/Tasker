@@ -4,7 +4,7 @@ const projectSchema = moongose.Schema({
 
     // this ID is assigned using User generated ID 
     // now this model belongs to user ID 
-    ID :{
+    userID :{
         type:moongose.Schema.Types.ObjectId,
         ref: "User",
         required: true
@@ -17,15 +17,16 @@ const projectSchema = moongose.Schema({
         type:String,
         require: true
     },
-    deadline:{
+    dueDate:{
+        type: String,
+        required:true
+    },
+    startDate:{
         type: String,
         required:true
     },
     priority: {
         type:String,
-    },
-    subtasks:{
-        type: [String],
     },
     teams: {
         type: [String]

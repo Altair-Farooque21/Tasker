@@ -68,7 +68,7 @@ const signin = async (req,res) =>{
             email: existinguser.email,
             id: existinguser._id
         },
-        SECRET_KEY,{ expiresIn: '3h' });
+        SECRET_KEY,{ expiresIn: '1d' });
 
         return res.status(200).json({
             user: existinguser,

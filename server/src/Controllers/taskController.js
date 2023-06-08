@@ -2,15 +2,17 @@ const taskModel = require('../Models/task');
 
 // API end point checked ✅ successfully
 const createTask = async (req,res) =>{
-    const {userID,title,description,subtasks,colorCode,creatDate,deadLine} = req.body;
+    const {userID,title,description,subTasks,colorCode,startDate,createDate,dueDate} = req.body;
     const task = new taskModel({
         userID: userID,
         title: title,
         description:description,
-        subtasks:subtasks,
-        colorCode:colorCode,
-        creatDate:creatDate,
-        deadLine:deadLine
+        subTasks:subTasks,
+        createDate:createDate,
+        startDate :startDate,
+        dueDate:dueDate,
+        colorCode : colorCode
+
     })
     try {
         await task.save();
@@ -23,10 +25,22 @@ const createTask = async (req,res) =>{
 
 // API end point checked ✅ successfully
 const getTask = async (req,res) =>{
-    const userID = req.body.userID; // needs to update once the middlewares are implemented
+    const userId = req.params.userID; // needs to update once the middlewares are implemented
     try {
-        const tasks = await taskModel.find({userID : userID});
-        res.status(200).json(tasks);
+        const tasks = await taskModel.find({userID : userId});
+        res.status(200).json({tasks : tasks,message : "this message from server"});
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message: "Something Went Wrong"});
+    }
+}
+
+
+const getNote = async (req,res) =>{
+    const taskId = req.params.taskID; // needs to update once the middlewares are implemented
+    try {
+        const tasks = await taskModel.find({ _id : taskId});
+        res.status(200).json({tasks : tasks,message : "this message from server"});
     } catch (error) {
         console.log(error);
         res.status(500).json({message: "Something Went Wrong"});
@@ -76,6 +90,7 @@ const deleteTask = async (req,res) =>{
 module.exports = {
     createTask,
     getTask,
+    getNote,
     deleteTask,
     updateTask
 }

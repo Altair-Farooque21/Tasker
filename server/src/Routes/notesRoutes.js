@@ -3,13 +3,16 @@ const express = require('express');
 const {
     createNote,
     getNote,
+    getNoteByID,
     updateNote,
     deleteNote
   } = require('../Controllers/noteController.js');
 
 const noteRouter = express.Router();
 
-noteRouter.get('/',getNote);
+noteRouter.get('/:userID',getNote);
+
+noteRouter.get('/Note/:noteID',getNoteByID);
 
 noteRouter.post('/',createNote);
 
