@@ -5,37 +5,62 @@ import closeIcon from "../../../assets/close.png";
 import axios from 'axios';
 import { getCreateDate } from '../../../utils/notesUtils';
 
-function addNotes({handleClose,uid,cid}) {
+function addNotes({handleClose,noteID,onAddNote,modeType}) {
    // getting and setting input values
    const [noteData,setNoteData] = useState({ title : '',note : ''});
-   const [mode,setmode] = useState('Create');
-   const userID = uid;
-   const color = "#a06cdf";
+   const [updateData,setUpdateData] = useState({ title : '',note : ''});
+   const userID = sessionStorage.getItem("userID");
+   const [editMode,setEditMode] = useState('')
+   const colorCodes = ["#ff8989", // red
+                       "rgb(255, 186, 59)",  // Orange
+   "rgb(249, 249, 89)",  // yellow
+   "rgb(158, 255, 158)", // green
+   "rgb(142, 243, 243)", // teal
+   "rgb(170, 231, 255)", // sky blue
+   "rgb(185, 195, 255)", // blue
+   "#cda5ff",            // purple
+   "rgb(255, 208, 216)" ,// pink
+  ]
 
-   useEffect(()=>{
-        if(!(cid === '')){
-        setmode('Update');
-        }
-        else{
-          setmode("Create");
-        }
-   },[cid]);
-   
+  const getRandomColor = ()  => {
+    const randomIndex = Math.floor(Math.random() * colorCodes.length);
+    return colorCodes[randomIndex];
+  }
 
+  // for create action handler
    const handleInputChange = (e) => {
     let name = e.target.name;
     let value = e.target.value; // corrected typo
     setNoteData({ ...noteData, [name]: value });
   };
 
-  const createNote = async (e) =>{
+  // for update action handler
+  const handleUpdateChange = (e) => {
+    let name = e.target.name;
+    let value = e.target.value; // corrected typo
+    setUpdateData({ ...updateData, [name]: value });
+  };
+
+  const ActionHandleClose = () =>{
+        handleOnDiscard()
+        handleClose()
+  }
+  const handleEditButton = () =>{
+        setEditMode("Update");
+  }
+
+  const handleOnDiscard = () =>{
+        setEditMode("");
+  }
+  // backend Actions
+
+  const AxiosCreateNewEntry = async () =>{
     // creates note in the database
-    e.preventDefault();
     const Data = {
         userID: userID,
         title: noteData.title,
-        description:noteData.note,
-        colorCode: color,
+        notes: noteData.note,
+        colorCode: getRandomColor(),
         creatDate: getCreateDate(),
     }
     console.log(Data);
@@ -45,40 +70,115 @@ function addNotes({handleClose,uid,cid}) {
                 'Content-Type': 'application/json'
               }
           });
-        console.log(res);
-        
+        // console.log(res);
+        onAddNote()
+        handleClose()
     } catch (error) {
         console.error(error);
     }
 
   }
-  const updateNote = async (e) =>{
-    // updates note in the database
-    e.preventDefault();
+
+  const AxiosGetNoteByID = async () =>{
+       try {
+          const res = await axios.get(`/notes/Note/${noteID}`)
+          // console.log(res.data)
+          setUpdateData({ title : res.data.title,note : res.data.notes})
+       } catch (error) {
+         console.log(error);
+       }
   }
 
-  const deleteNote = async (e) =>{
-    e.preventDefault();
+
+  const AxiosUpdateEntry = async () =>{
+    // updates note in the database
+    const dataUpdate = {
+      title : updateData.title,
+      notes : updateData.note
+     }
+    try {
+      const res = await axios.put(`/notes/${noteID}`,dataUpdate,{
+          headers: {
+              'Content-Type': 'application/json'
+            }
+        });
+      // console.log(res);
+      onAddNote()
+      handleOnDiscard()
+      handleClose()
+  } catch (error) {
+      console.error(error);
+  }
+  }
+
+  const AxiosDeleteEntry = async () =>{
+    try {
+      const res = await axios.delete(`/notes/${noteID}`)
+      // console.log(res);
+      onAddNote()
+      handleClose()
+     } catch (error) {
+      console.error(error);
+      }
 
   }
   
+  useEffect(()=>{
+    if(modeType === "View"){
+    AxiosGetNoteByID()
+    }
+    // console.log("render")
+  },[modeType,editMode,noteID])
   return (
     <div className={css.Container}>
-      <p> {cid} </p>
         <div className={css.titleWrapper}>
-            <p className={css.title}>
-                Title
-            </p>
-            <input value = {noteData.title} name="title" type="text" placeholder='add title' onChange={handleInputChange}/>
+            {modeType === "View" && editMode === '' ? 
+            
+            <p>{updateData && updateData.title}</p> :
+
+            <input value = {modeType === "View" && editMode === '' ? noteData.title : updateData.title}
+                   name="title" 
+                   type="text"
+                   placeholder='add title'
+                   onChange={ editMode === 'Update' ? handleUpdateChange : handleInputChange}/>
+                  }
         </div>
         <div className={css.notesWrapper}>
-            <textarea  value = {noteData.note} type="text" name="note" className={css.notesInput} placeholder='add your notes here' onChange={handleInputChange}/>
+            {modeType === "View" && editMode === ''? 
+
+            <p>{updateData && updateData.note}</p> :
+
+            <textarea  value = {modeType === "View" && editMode === '' ? noteData.note : updateData.note}
+                       type="text" 
+                       name="note" 
+                       className={css.notesInput} 
+                       placeholder='add your notes here' 
+                       onChange={ editMode === 'Update' ? handleUpdateChange : handleInputChange}/>
+                }
         </div>
         <div className={css.actionBtns}>
-            <button className={css.deleteBtn} onClick={deleteNote}><img src={deleteIcon} alt="" width={20} /> Delete </button>
-            <button className={css.createBtn}  onClick={ mode === 'Create' ? createNote : updateNote}> {mode} </button>
+            { editMode === '' ?
+
+              <button className={css.deleteBtn} onClick={AxiosDeleteEntry}>
+                    <img src={deleteIcon} alt="" width={20} /> Delete 
+              </button> :
+
+              <button className={css.deleteBtn} onClick={handleOnDiscard}>
+                   Discard
+              </button>
+
+              }
+              { editMode === '' ?
+            <button className={css.createBtn}  onClick={ modeType === 'Create' ? AxiosCreateNewEntry : handleEditButton}> 
+                    {modeType === 'Create' ? "Add" : "Edit"}
+            </button> : 
+            <button className={css.createBtn} onClick={AxiosUpdateEntry}>
+                  Save Changes
+            </button> 
+              }
+
         </div>
-        <img className={css.closeBtn} src={closeIcon} alt="" width={24} onClick={handleClose}/>
+        <img className={css.closeBtn} src={closeIcon} alt="" width={24} onClick={ActionHandleClose}/>
     </div>
   )
 }

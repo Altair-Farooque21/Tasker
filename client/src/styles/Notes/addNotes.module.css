@@ -48,11 +48,8 @@
 
 .notesWrapper{
     width: 80%;
-    height: 38vh;
+    height: 54vh;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     top:12%;
 }
 .notesWrapper::-webkit-scrollbar{
@@ -67,6 +64,7 @@
     padding: 1rem;
     text-align: left;
     overflow-y: hidden;
+    resize: none;
 }
 .notesInput:focus{
     outline: none !important;
@@ -121,4 +119,8 @@
 }
 .deleteBtn img{
     margin-right: 8px;
+}
+
+.close{
+    display: none;
 }

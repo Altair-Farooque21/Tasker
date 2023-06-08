@@ -1,8 +1,22 @@
 import React from 'react';
 import css from "../../../styles/Tasks/DeleteProject.module.css";
-import deleteBin from "../../../assets/animations/bin.gif"
+import deleteBin from "../../../assets/animations/bin.gif";
 
-function DeleteProject({actionCancel}) {
+import axios from 'axios';
+
+function DeleteProject({actionCancel , onDeleteRefresh, pid}) {
+
+  const AxiosDeleteProjectEntry = async ()=>{
+        try {
+          const res = await axios.delete(`/projects/${pid}`)
+          console.log(res)
+          onDeleteRefresh()
+          actionCancel()
+        } catch (error) {
+          console.log(error)
+        }
+  }
+
   return (
     <div className={css.container}>
         <img src={deleteBin} alt="" width={80}/>
@@ -11,7 +25,7 @@ function DeleteProject({actionCancel}) {
         </p>
         <div className={css.actionBtns}>
              <button className={css.cancelBtn} onClick={actionCancel}>Cancel</button>
-             <button className={css.deleteBtn}>Delete</button>
+             <button className={css.deleteBtn} onClick={AxiosDeleteProjectEntry}>Delete</button>
         </div>
     </div>
   )

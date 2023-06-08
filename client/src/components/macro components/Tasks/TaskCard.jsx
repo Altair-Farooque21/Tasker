@@ -8,7 +8,15 @@ import dotmenu from "../../../assets/dotmenu.png";
 import edit from "../../../assets/editing.png";
 import Delete from "../../../assets/delete.png";
 
-function TaskCard({openProject,openDeleteOverlay ,openEditOverlay,pid}) {
+function TaskCard({openProject,
+                  openDeleteOverlay ,
+                  openEditOverlay,
+                  ProjectID,
+                  Title,
+                  Description,
+                  DueDate,
+                  Priority,
+                  }) {
    const [showDotMenu,setshowDotMenu] = useState(false);
    const [closeDotMenu,setCloseDotMenu] = useState(false);
 
@@ -19,28 +27,34 @@ function TaskCard({openProject,openDeleteOverlay ,openEditOverlay,pid}) {
       setshowDotMenu(!showDotMenu);
    }
 
+   const getDueFormat = (DateStr) =>{
+      const date = new Date(DateStr);
+      const day = date.getDate().toString().padStart(2, '0');
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      return `${day} / ${month}`;
+   }
+
   return (
     <div className={css.taskCardWrapper}>
         <p className={css.taskTitle}>
-            Website design
+            {Title}
         </p>
         <div className={css.taskContainer}  onClick={openProject}>
             <p className={css.taskDescp}>
-                    The design of the task manage-ment website for the Altair Company , this tool must be implement in the view of developer , where 
-                    they wanna save thier time managing their projects .
+                    {Description}
             </p>
             <div className={css.taskMetadata}>
                  <p className={css.taskPriorityKey}>
                     Priority
                  </p>
                  <p className={css.taskPriorityValue}>
-                    High
+                    {Priority}
                  </p>
                  <p className={css.taskDue}>
                     Due
                  </p>
                  <p className={css.taskDueDate}>
-                    7 / 05
+                    {getDueFormat(DueDate)}
                  </p>
                  <p className={css.taskTeam}>
                     Team
@@ -53,12 +67,13 @@ function TaskCard({openProject,openDeleteOverlay ,openEditOverlay,pid}) {
                  </div>
             </div>
         </div>
+        {/* action menu */}
         <img className={css.cardEditBtn} onClick={handledotmenu} src={dotmenu} alt="" width={26}/>
         <div className={`${css.ddMenu} ${showDotMenu ? css.show : ''} ${!closeDotMenu ? css.close : ''}`}>
-            <button className={css.editBtn} onClick={openEditOverlay}>
+            <button className={css.editBtn} onClick={ (e) => {openEditOverlay(ProjectID)}}>
                   <img src={edit} alt="" width={18}/> Edit
             </button>
-            <button className= {css.deletebtn} onClick = {openDeleteOverlay} >
+            <button className= {css.deletebtn} onClick = {(e) => {openDeleteOverlay(ProjectID)}} >
                   <img src={Delete} alt="" width={18}/> Delete
             </button>
         </div>

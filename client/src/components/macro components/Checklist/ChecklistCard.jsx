@@ -1,32 +1,38 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import css from '../../../styles/Checklist/ChecklistCard.module.css';
 import reminder from "../../../assets/reminder.png";
 import bookmark from "../../../assets/bookmark.png";
 
-function ChecklistCard({cardClicked}){  
+function ChecklistCard({title,description,checkLists,dueDate,colorCode,createDate,taskID,cardClicked}){ 
+  const containerRef = useRef(null);
+
+  useEffect(()=>{
+    containerRef.current.style.backgroundColor = colorCode
+  },[colorCode]);
+  
   return (
-    <div className={css.ccWrapper} onClick={cardClicked}>
+    <div className={css.ccWrapper} ref={containerRef} onClick={() => {cardClicked(taskID)}}>
           <p className={css.ccTitle}>
-               API Integration
+               {title}
           </p>
           <p className={css.ccDesc}>
-             Integrate the API in the both backend and frontend
+             {description}
           </p>
           <div className={css.ccSubwrap}>
                 <img src={bookmark} alt="" width={20}/>
                 <p className={css.ccSub}>
-                    9  checklist
+                    {checkLists}  checklist
                 </p>
           </div>
           <div className={css.reminder}> 
             <img src={reminder} alt=""  width={22}/>
             <p className={css.ccRdate}>
-                on 7 Tue, April
+                on {dueDate}
             </p>
           </div>
           <div className={css.created}>
                <p className={css.cDate}>
-                  05 mon , 2023
+                  {createDate}
                </p>
           </div>
     </div>

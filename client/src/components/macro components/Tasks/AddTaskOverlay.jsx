@@ -1,15 +1,25 @@
 import React,{useEffect, useState} from 'react';
 import css from "../../../styles/Tasks/AddTaskOverlay.module.css";
 import closeIcon from "../../../assets/close.png";
+import axios from "axios";
 
 
-function AddTaskOverlay({onClose ,modeType}) {
+function AddTaskOverlay({onClose ,pID,modeType,onAddProject}) {
   const [selectedOption, setSelectedOption] = useState("");
 
   const [teamValue, setteamValue]  = useState('')
   const [teamValues, setteamValues] = useState([]);
-  const [mode,setMode] = useState(modeType);
+  const userID  = sessionStorage.getItem("userID");
+  const [responseData,setResponseData] = useState(null);
 
+  const [UpdateData,setUpdateData] = useState({
+    title : '',
+    description :"",
+    startDate : '',
+    dueDate : '',
+    priority : '',
+    teams : []
+  })
 
   const [projectData,setProjectData] = useState({
       title : '',
@@ -25,13 +35,18 @@ function AddTaskOverlay({onClose ,modeType}) {
     }))
   }
 
-  const handleAddbtn = () =>{
-    console.log(projectData,teamValues);
+
+  const ActionUpdateData = (e) =>{
+    const {name, value} = e.target;
+    setUpdateData((UpdateData) =>({
+      ...UpdateData,[name]:value
+    }))
   }
+
 
   const handleTeamData =(e)  =>{
     if (e.key === "Enter") {
-      setteamValues((teamValues) => {
+       setteamValues((teamValues) => {
         const newValue = [...teamValues, teamValue];
         return newValue;
       });
@@ -39,10 +54,84 @@ function AddTaskOverlay({onClose ,modeType}) {
     }
   }
 
+  const handlePrioritySelect = (event) =>{
+        setSelectedOption(event.target.value)
+  }
+  
+  const handleResponseDataWithUpdate = (resData) =>{
+    if(resData){
+    setUpdateData({
+      title: resData.title || '',   // project title
+      description : resData.description || '',  // project description
+      startDate : resData.startDate || '',
+      dueDate : resData.dueDate || '',        // project deadline
+      priority: resData.priority || '',          // project priority
+      teams: resData.subTasks || ''
+    })
+    }
+  }
+  // backend Actions
+
+  const AxiosCreateNewEntry = async (event) =>{
+        const Data = {
+          userID: userID, // user id assigned for project
+          title: projectData.title,   // project title
+          description : projectData.description,  // project description
+          startDate : projectData.startDate,
+          dueDate : projectData.dueDate,        // project deadline
+          priority: selectedOption,          // project priority
+          teams: teamValues
+        }
+        try {
+          const res = await axios.post("/projects/",Data,{
+            headers: {
+                'Content-Type': 'application/json'
+              }
+          });
+          // console.log(res)
+          onAddProject()
+          onClose()
+        } catch (error) {
+          console.log(error)
+        }
+  }
+
+  const AxiosGetProjectDataById = async () =>{
+       try {
+          const res = await axios.get(`/projects/project/${pID}`);
+          setResponseData(res.data[0])
+          handleResponseDataWithUpdate(res.data[0]);
+       } catch (error) {
+         console.log(error)
+       }
+  }
+
+  const AxiosUpdateNewEntry = async () =>{
+    const Data = {
+      userID: userID, // user id assigned for project
+      title: UpdateData.title,   // project title
+      description : UpdateData.description,  // project description
+      startDate : UpdateData.startDate,
+      dueDate : UpdateData.dueDate,        // project deadline
+      priority: selectedOption,          // project priority
+      teams: teamValues
+    }
+
+    try {
+      const res = await axios.put(`/projects/${pID}`,Data)
+      onAddProject()
+      onClose()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   // conditional rendering components
   useEffect(()=>{
-      setMode(modeType);
-  },[modeType]);
+    if(modeType === 'update'){
+      AxiosGetProjectDataById();
+    }
+  },[pID]);
 
   return (
     <div className={css.addTapWrapper}>
@@ -52,11 +141,12 @@ function AddTaskOverlay({onClose ,modeType}) {
              <p className={css.title}>
                  Title
              </p>
-             <input value = {projectData.title}
+             <input value = {modeType === 'update' ?  UpdateData && UpdateData.title  : projectData.title}
                     name = "title"
                     type="text"
                     placeholder='Website Design'
-                    className={css.titleInput} onChange={handleProjectData}/>
+                    maxLength={15}
+                    className={css.titleInput} onChange={modeType === 'update' ? ActionUpdateData : handleProjectData}/>
       
           </div>
 
@@ -64,10 +154,11 @@ function AddTaskOverlay({onClose ,modeType}) {
              <p className={css.desc}>
                  Description
              </p>
-             <textarea value = {projectData.description}
+             <textarea value = {modeType === 'update' ? UpdateData && UpdateData.description : projectData.description}
                        name = "description"
                        type="textarea"
-                       className={css.descInput} onChange={handleProjectData}/>
+                       maxLength={200}
+                       className={css.descInput} onChange={modeType === 'update' ? ActionUpdateData : handleProjectData}/>
       
           </div>
 
@@ -89,30 +180,30 @@ function AddTaskOverlay({onClose ,modeType}) {
 
         <div className={css.startWrapper}>
              <p className={css.start}> Start</p>
-             <input value = {projectData.startDate}
+             <input value = {modeType === 'update' ? UpdateData && UpdateData.startDate : projectData.startDate}
                     name = "startDate"
                     type="date"
-                    onChange={handleProjectData}
+                    onChange={modeType === 'update' ? ActionUpdateData : handleProjectData}
                     />
           </div>
           
           <div className={css.dueWrapper}>
              <p className={css.due}>Deadline</p>
-             <input value = {projectData.dueDate}
+             <input value = {modeType === 'update' ? UpdateData && UpdateData.dueDate : projectData.dueDate}
                     name = "dueDate"
                     type="date"
-                    onChange={handleProjectData}
+                    onChange={modeType === 'update' ? ActionUpdateData : handleProjectData}
                     />
           </div>
 
           <div className={css.priorWrap}>
             <p className={css.priority}>Priority <span>( Optional )</span></p>
             <div className={css.priorSelectWrap}>
-              <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
+              <select value={modeType === 'update' ? UpdateData && UpdateData.priority : selectedOption} onChange={handlePrioritySelect}>
                 <option value="">Priority...</option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
+                <option value="Low" key="low">Low</option>
+                <option value="Medium" key="medium">Medium</option>
+                <option value="High" key="high">High</option>
               </select>
             </div>
           </div>
@@ -120,7 +211,9 @@ function AddTaskOverlay({onClose ,modeType}) {
         </div>
 
         <div className={css.submitWrap}>
-           <button onClick={handleAddbtn}> {mode === 'create' ? "Add" : "Save Changes"} </button>
+           <button onClick={modeType === 'create' ? AxiosCreateNewEntry : AxiosUpdateNewEntry}>
+                   {modeType === 'create' ? "Add" : "Save Changes"} 
+           </button>
         </div>
             <img className = {css.closeOverlay} src={closeIcon} alt="" width={24}  onClick={onClose}/>
     </div>
