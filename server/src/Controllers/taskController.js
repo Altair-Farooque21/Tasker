@@ -61,7 +61,7 @@ const updateTask = async (req,res) =>{
         const Updatetask = await taskModel.findByIdAndUpdate({ _id : taskID},
                                         updateData,
                                         {new:true});
-        res.status(200).json(Updatetask);
+        res.status(200).json({message:"Updated successfully"});
     } catch (error) {
         console.log(error);
         res.status(500).json({message: "Something Went Wrong"});
