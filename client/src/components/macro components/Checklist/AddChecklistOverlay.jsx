@@ -73,7 +73,7 @@ function AddChecklistOverlay({onCancel,modeType,taskID,onAddTask}) {
         onCancel()
   }
 
-  // this get value from each task added
+  // this get value from each task added for create
   const handleTaskValue = (value) =>{
         setFormData((formData) => ({
           ...formData,
@@ -81,6 +81,15 @@ function AddChecklistOverlay({onCancel,modeType,taskID,onAddTask}) {
         }));
 
   }
+
+  // this get value from each task added for create
+  const handleUpdateTaskValue = (value) =>{
+    setUpdateData((updateData) => ({
+      ...updateData,
+      subTasks: [...updateData.subTasks, value],
+    }));
+
+}
 
   // this will get data form inputs and maps to object
   const handleFormData = (event) =>{
@@ -107,6 +116,15 @@ function AddChecklistOverlay({onCancel,modeType,taskID,onAddTask}) {
         setTaskList((taskList) => {
           return [...taskList, component];
         });
+  }
+
+  const UpdateNewTaskAction = () =>{
+        const component = <AddCheckbox modeType = {Editmode}
+                                       taskName={null}
+                                       getData = {handleUpdateTaskValue}/>
+        setTaskList((taskList) => {
+                return [...taskList, component];
+            });
   }
 
   // functions are defined correctly
@@ -158,7 +176,9 @@ function AddChecklistOverlay({onCancel,modeType,taskID,onAddTask}) {
   const AxiosGetNoteEntry = async () =>{
     try {
       const res =  await axios.get(`/tasks/gettasks/notes/${taskID}`)
+      // this state object for view
       settaskData(res.data)
+      // this state object for Update
       setUpdateData({
         title : res.data.tasks[0].title,
         description : res.data.tasks[0].description,
@@ -166,15 +186,31 @@ function AddChecklistOverlay({onCancel,modeType,taskID,onAddTask}) {
         dueDate : res.data.tasks[0].dueDate,
         subTasks : res.data.tasks[0].subTasks,
       })
+      // conditional task list component update
+      if(Editmode === "Update"){
+        const ExistingComponents = res.data.tasks[0].subTasks.map((task)=>
+             (<AddCheckbox taskName={task} getData={handleUpdateTaskValue} modeType={modeType}/> ))
+        setTaskList((taskList) => {
+          return [...taskList, ExistingComponents];
+      });
+
+      }
       // console.log(res.data)
       // console.log(userId)
      } catch (error) {
        console.log(error)
      }
   }
-  // const AxiosUpdateData = async (event) =>{
-  //   console.log("this will update fields in existing entry")
-  // }
+  const AxiosUpdateData = async (event) =>{
+      try {
+        const res = await axios.put(`/tasks/${taskID}`,updateData)
+        console.log(res.data)
+        onAddTask()
+        ActionSaveChanges()
+      } catch (error) {
+        console.log(error)
+      }
+  }
 
   const AxiosDeleteEntry = async (event) =>{
         event.preventDefault()
@@ -274,12 +310,12 @@ function AddChecklistOverlay({onCancel,modeType,taskID,onAddTask}) {
                   <p>To do's</p>
               </div>
               {
-                modeType === 'View' ?  taskData && taskData.tasks && taskData.tasks.length > 0 && taskData.tasks[0].subTasks.map((task)=>{
+                modeType === 'View' && Editmode === '' ?  taskData && taskData.tasks && taskData.tasks.length > 0 && taskData.tasks[0].subTasks.map((task)=>{
                    return <AddCheckbox taskName={task} getData={handleTaskValue} modeType={modeType}/>
                 }) : taskList
               }
               { modeType === 'Create' || Editmode === 'Update' ?
-              <p className={css.addNewTaskBtn} onClick={addNewTaskAction}>Add new task</p> :
+              <p className={css.addNewTaskBtn} onClick={Editmode === "Update" ? UpdateNewTaskAction : addNewTaskAction}>Add new task</p> :
               ''
               }
           </div>
@@ -297,7 +333,7 @@ function AddChecklistOverlay({onCancel,modeType,taskID,onAddTask}) {
                              Edit
                         </button>
                     ) : Editmode === 'Update' ? (
-                        <button className={css.addBtn} onClick={ActionSaveChanges}>
+                        <button className={css.addBtn} onClick={AxiosUpdateData}>
                          Save Changes
                         </button>
              ) : ''}
