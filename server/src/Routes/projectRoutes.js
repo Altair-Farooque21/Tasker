@@ -5,18 +5,19 @@ const {
     getProjects,
     getProjectByID,
     deleteProject,
-    updateProject
+    updateProject,
 } = require("../Controllers/projectsController");
 
 
-projectRouter.get('/:userID',getProjects);
+projectRouter.get('/:userID', getProjects);
 
-projectRouter.get('/project/:projectID',getProjectByID);
+projectRouter.get('/project/:projectID', getProjectByID);
 
-projectRouter.post('/',createProject);
+projectRouter.post('/', createProject);
 
-projectRouter.put('/:projectID',updateProject);
+projectRouter.put('/:projectID', updateProject);
 
 projectRouter.delete('/:projectID',deleteProject);
+
 
 module.exports = projectRouter;

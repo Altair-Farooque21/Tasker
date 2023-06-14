@@ -11,27 +11,22 @@ import TestmonialSwiper from "./macro components/TestmonialSwiper.jsx";
 
 import {features ,testimonials} from "../utils/LandingPageConstants.js";
 
-import feat1Poly from "../assets/feat1Poly.png";
-import feat2Poly from "../assets/feat2Poly.png";
-import feat3Poly from "../assets/feat3Poly.png";
-import feat4Poly from "../assets/feat4Poly.png";
-import feat5Poly from "../assets/feat5Poly.png";
-
-import feat1Img from "../assets/feat1Img.png";
-import feat1img0 from "../assets/taskf2.png";
-import feat2Img from "../assets/feat2Img.png";
-import feat3Img from "../assets/feat3Img (1).png";
-import feat3Img0 from "../assets/feat3Img0.png"
-import feat4Img from "../assets/feat4Img (3).png";
-import feat4Img0 from "../assets/feat4Img0.png";
-import feat4Img1 from "../assets/feat4Img1.png";
-import feat5Img from "../assets/feat5Img.png";
-
 import socialImg1 from "../assets/facebook.png";
 import socialImg2 from "../assets/twitter.png";
 import socialImg3 from "../assets/instagram.png";
 import socialImg4 from "../assets/github.png";
 
+import feat1 from "../assets/feat1.png";
+
+import feat2 from "../assets/feat2.png";
+
+import feat3 from "../assets/feat3.png";
+
+import feat4 from "../assets/feat4.png";
+
+import feat5 from "../assets/feat5.png";
+
+import toggle from "../assets/toggler.png";
 
 
 function LandingPage() {
@@ -46,6 +41,9 @@ function LandingPage() {
     <div>
          <section className={css.HeroSection}>
             <nav className={css.navbar}>
+                <div className={css.navBarToggler}>
+                    <img src={toggle} alt="" width={28}/>
+                </div>
                 <p className={css.brand}>Task<span>er</span></p>
                 <ul className={css.navItems}>
                          <li>
@@ -98,72 +96,74 @@ function LandingPage() {
              {features.title}
              </p>
 
-            <div className={css.featuresGrid}>
+            <div className={css.featuresWrapper}>
 
-                <div className={css.featbanner}>
-                    <img src={feat1Poly} alt="" className={css.feat1Poly} width= "448"/>
-                    <img className =  {css.feat1Img} src={feat1Img} width= "256" alt="" />
-                    <img className = {css.feat1Img0} src={feat1img0} alt="" height={60}/>
+                <div className={css.feature1Wrap}>
+                    <div className={css.featbanner}>
+                        <img src={feat1} alt="" />
+                    </div>
+
+                    <div className={css.featureInfo}>
+                        <LandingPageFeatures
+                             title1 =  {features.feature1.title1}
+                            title2 = {features.feature1.title2}
+                            desc= {features.feature1.desc}
+                            />
+                    </div>
                 </div>
 
-                <LandingPageFeatures
-                        title1 =  {features.feature1.title1}
-                        title2 = {features.feature1.title2}
-                        desc= {features.feature1.desc}
-                        />
-
-                <LandingPageFeatures
-                        title1 =  {features.feature2.title1}
-                        title2 = {features.feature2.title2}
-                        desc= {features.feature2.desc}
-                        />
-
-                <div className={css.featbanner}>
-                    <img src={feat2Poly} alt="" className={css.feat2Poly} width= "448"/>
-                    <img className =  {css.feat2Img} src={feat2Img} width= "232" alt="" />
+                <div className={css.feature2Wrap}>
+                    <div className={css.featureInfo}>
+                        <LandingPageFeatures
+                                title1 =  {features.feature2.title1}
+                                title2 = {features.feature2.title2}
+                                desc= {features.feature2.desc}
+                                />
+                    </div>
+                    <div className={css.featbanner}>
+                        <img src={feat2} alt="" />
+                    </div>
                 </div>
-
                
+                <div className={css.feature3Wrap}>
+                    <div className={css.featbanner}>
+                        <img src={feat3} alt="" />
+                    </div>
 
-                <div className={css.featbanner}>
-                    <img src={feat3Poly} alt="" className={css.feat3Poly} width= "448"/>
-                    <img className =  {css.feat3Img} src={feat3Img} width= "232" alt="" />
-                    <img className =  {css.feat3Img0} src={feat3Img0} width= "140" alt="" />
+                    <div className={css.featureInfo}>
+                        <LandingPageFeatures
+                                title1 =  {features.feature3.title1}
+                                title2 = {features.feature3.title2}
+                                desc= {features.feature3.desc}
+                                />
+                    </div>
                 </div>
 
-                <LandingPageFeatures
-                        title1 =  {features.feature3.title1}
-                        title2 = {features.feature3.title2}
-                        desc= {features.feature3.desc}
-                        />
-                
-                <LandingPageFeatures
-                        title1 =  {features.feature4.title1}
-                        title2 = {features.feature4.title2}
-                        desc= {features.feature4.desc}
-                        />
-                
-                <div className={css.featbanner}>
-                    <img src={feat4Poly} alt="" className={css.feat4Poly} width= "512"/>
-                    <img className = {css.feat4Img} src={feat4Img} width= "256" alt="" />
-                    <img className = {css.feat4Img0} src={feat4Img0} width= "256" alt="" />
-                    <img className = {css.feat4Img1} src={feat4Img1} width= "256" alt="" />
+                <div className={css.feature4Wrap}>
+                        <div className={css.featureInfo}>
+                            <LandingPageFeatures
+                                    title1 =  {features.feature4.title1}
+                                    title2 = {features.feature4.title2}
+                                    desc= {features.feature4.desc}
+                                    />
+                        </div>
+                        <div className={css.featbanner}>
+                            <img src={feat4} alt="" />
+                        </div>
                 </div>
-
                 
-
-                <div className={css.featbanner}>
-                    <img src={feat5Poly} alt="" className={css.feat5Poly} width= "512"/>
-                    <img className =  {css.feat5Img} src={feat5Img} width= "448" alt="" />
+                <div className={css.feature5Wrap}>
+                    <div className={css.featbanner}>
+                        <img src={feat5} alt="" />
+                    </div>
+                    <div className={css.featureInfo}>
+                        <LandingPageFeatures
+                                title1 =  {features.feature5.title1}
+                                title2 = {features.feature5.title2}
+                                desc= {features.feature5.desc}
+                                />
+                    </div>
                 </div>
-
-        
-                <LandingPageFeatures
-                        title1 =  {features.feature5.title1}
-                        title2 = {features.feature5.title2}
-                        desc= {features.feature5.desc}
-                    />
-           
             </div>
         </section>
 

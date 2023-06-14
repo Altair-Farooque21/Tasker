@@ -41,8 +41,13 @@ function addNotes({handleClose,noteID,onAddNote,modeType}) {
     setUpdateData({ ...updateData, [name]: value });
   };
 
+  const resetFrom = () =>{
+    setNoteData({ title : '',note : ''})
+  }
+
   const ActionHandleClose = () =>{
         handleOnDiscard()
+        resetFrom()
         handleClose()
   }
   const handleEditButton = () =>{
@@ -127,8 +132,14 @@ function addNotes({handleClose,noteID,onAddNote,modeType}) {
     if(modeType === "View"){
     AxiosGetNoteByID()
     }
+    if(editMode === 'Update'){
+      AxiosGetNoteByID()
+    }
     // console.log("render")
-  },[modeType,editMode,noteID])
+  },[modeType,
+    editMode,
+    noteID])
+  
   return (
     <div className={css.Container}>
         <div className={css.titleWrapper}>
@@ -136,7 +147,7 @@ function addNotes({handleClose,noteID,onAddNote,modeType}) {
             
             <p>{updateData && updateData.title}</p> :
 
-            <input value = {modeType === "View" && editMode === '' ? noteData.title : updateData.title}
+            <input value = {editMode === 'Update' ?  updateData.title : noteData.title }
                    name="title" 
                    type="text"
                    placeholder='add title'
@@ -148,7 +159,7 @@ function addNotes({handleClose,noteID,onAddNote,modeType}) {
 
             <p>{updateData && updateData.note}</p> :
 
-            <textarea  value = {modeType === "View" && editMode === '' ? noteData.note : updateData.note}
+            <textarea  value = {editMode === 'Update' ? updateData.note : noteData.note}
                        type="text" 
                        name="note" 
                        className={css.notesInput} 
@@ -159,7 +170,7 @@ function addNotes({handleClose,noteID,onAddNote,modeType}) {
         <div className={css.actionBtns}>
             { editMode === '' ?
 
-              <button className={css.deleteBtn} onClick={AxiosDeleteEntry}>
+              <button className={css.deleteBtn} onClick={modeType === 'Create' ? null : AxiosDeleteEntry}>
                     <img src={deleteIcon} alt="" width={20} /> Delete 
               </button> :
 

@@ -38,7 +38,7 @@ const getProjects = async (req,res) =>{
 const getProjectByID = async (req,res) =>{
     const projectID = req.params.projectID; // needs to update once the middlewares are implemented
     try {
-        const projects = await projectModel.find({_id : projectID});
+        const projects = await projectModel.find({ _id : projectID});
         res.status(200).json(projects);
     } catch (error) {
         console.log(error);
@@ -76,6 +76,10 @@ const deleteProject = async (req,res) =>{
     }
 }
 
+
+
+
+
 // All end-points are working fine 
 // thoroughly checked every step 😎
 // Feel free to add middlewares🕸️ for extra security
@@ -86,5 +90,7 @@ module.exports = {
     getProjects,
     getProjectByID,
     deleteProject,
-    updateProject
+    updateProject,
+    
+
 };

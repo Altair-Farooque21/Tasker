@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import css from "../../../styles/Checklist/AddCheckbox.module.css"
+import css from "../../../styles/Tasks/AddCheckbox.module.css"
 
 function AddCheckbox({getData , taskName , modeType}) {
   const taskref = useRef(null);

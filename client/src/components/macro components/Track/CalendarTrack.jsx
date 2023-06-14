@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
-import css from "../../../styles/Track/CalendarTrack.module.css";
 import "../../../styles/Track/FullCalendarCustomStyles.css";
-
+import css from "../../../styles/Track/CalendarTrack.module.css";
 
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -74,6 +73,7 @@ function CalendarTrack() {
        eventDrop = {handledragEvents}
        selectable = {true}
        selectMirror = {true}
+       nextDayThreshold="00:00:00"
        />
     </div>
   );

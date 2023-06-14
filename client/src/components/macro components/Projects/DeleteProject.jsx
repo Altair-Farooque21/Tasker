@@ -1,5 +1,5 @@
 import React from 'react';
-import css from "../../../styles/Tasks/DeleteProject.module.css";
+import css from "../../../styles/Projects/DeleteProject.module.css";
 import deleteBin from "../../../assets/animations/bin.gif";
 
 import axios from 'axios';

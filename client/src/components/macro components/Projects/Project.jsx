@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import css from "../../../styles/Tasks/Project.module.css";
+import React, { useEffect, useState } from 'react';
+import css from "../../../styles/Projects/Project.module.css";
 import closeIcon from "../../../assets/close.png";
 import AddProjectSubTask from './AddProjectSubTask';
 import ProjectSubtaskFrom from './ProjectSubtaskFrom';
+import axios from 'axios';
 
-function Project({closeProject}) {
+function Project({closeProject,pID}) {
     const [openSubtask,setopenSubtask] = useState(false);
     const [closeSubtask,setcloseSubtask] = useState(false);
+    const [projectInfo,setProjectInfo] = useState(null)
+    const [subTasksData,setSubtasksData] = useState(null)
 
     const handleOpenSubtask = () =>{
         setcloseSubtask(!closeSubtask);
@@ -16,15 +19,48 @@ function Project({closeProject}) {
     const handleCloseSubtask = () =>{
         setcloseSubtask(!closeSubtask)
     }
+
+    const getDueFormat = (DateStr) =>{
+        const date = new Date(DateStr);
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        return `${day} / ${month}`;
+     }
+
+    const AxiosGetProjectByID = async () => {
+          try {
+            const res = await axios.get(`/projects/project/${pID}`)
+            setProjectInfo(res.data)
+            // console.log(res)
+          } catch (error) {
+            console.log(error)
+          }
+    }
+
+    const AxiosGetSubtasksData = async () => {
+          try {
+            const res = await axios.get(`/project/subtasks/${pID}`)
+            setSubtasksData(res.data)
+            console.log(res.data)
+          } catch (error) {
+            console.log(error)
+          }
+    }
+
+    useEffect(()=>{
+        AxiosGetProjectByID()
+        AxiosGetSubtasksData()
+    },[pID])
+
   return (
     <div className={css.mainContainer}>
         <div className={css.projectInfoWrapper}>
             <div className={css.projectDescWrap}>
                 <p className={css.projectTitle}>
-                    Website Design
+                    {projectInfo && projectInfo[0].title}
                 </p>
                 <p className={css.projectDesc}>
-                        Website design involves various aspects such as user interface (UI) design, user experience (UX) design, graphic design, and web development. The UI design focuses on the look and feel of the website and how it interacts with users, while UX design focuses on the overall user experience, including ease of use, accessibility, and efficiency.
+                    {projectInfo && projectInfo[0].description}
                 </p>
             </div>
             <div className={css.projectInfoWrap}>
@@ -32,13 +68,13 @@ function Project({closeProject}) {
                     <div className={css.projectStartWrap}>
                         <p >Start Date</p>
                         <p className={css.projectstartDate}>
-                            02 / 05
+                           {projectInfo && getDueFormat(projectInfo[0].startDate)}
                         </p>
                     </div>
                     <div className={css.projectDueWrap}>
                         <p>Due Date</p>
                         <p className={css.projectstartDate}>
-                            26 / 05
+                            {projectInfo && getDueFormat(projectInfo[0].dueDate)}
                         </p>
                     </div>
 
@@ -47,7 +83,7 @@ function Project({closeProject}) {
                     <div className={css.projectpriorityWrap}>
                         <p>Priority</p>
                         <p className={css.projectpriority}>
-                            High
+                            {projectInfo && projectInfo[0].priority}
                         </p>
                     </div>
                     <div className={css.projectTeamWrap}>
@@ -66,11 +102,13 @@ function Project({closeProject}) {
                 <p className={css.subtaskTitle}>Sub-Tasks</p>
                 {/* sub tasks will be redenred here */}
                 <div className={css.projectsubtasks}>
-                    <AddProjectSubTask />
-                    <AddProjectSubTask />
-                    <AddProjectSubTask />
-                    <AddProjectSubTask />
-                    <AddProjectSubTask />
+                    {subTasksData && subTasksData.map((subTask) => {
+                        return <AddProjectSubTask sID={subTask._id} 
+                                                  key={subTask._id}
+                                                  name = {subTask.title} 
+                                                  deadline = {getDueFormat(subTask.deadline)} 
+                                                  onCompleteTask = {AxiosGetSubtasksData} />
+                    })}
                     <button className={css.subTaskAddBtn} onClick={handleOpenSubtask}> Tap to add </button>
                 </div>
             </div>
@@ -84,7 +122,7 @@ function Project({closeProject}) {
         </div>
         <img className = {css.closeOverlay} src={closeIcon} alt="" width={26}  onClick={closeProject}/>
         <div className={`${css.subTaskContainer} ${openSubtask ? css.show : ''} ${!closeSubtask ? css.close : ''}`}>
-                    <ProjectSubtaskFrom closeForm={handleCloseSubtask}/>
+                    <ProjectSubtaskFrom onAddSubtask = {AxiosGetSubtasksData} closeForm={handleCloseSubtask} pID = {pID}/>
         </div>
     </div>
   )

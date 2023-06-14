@@ -9,7 +9,8 @@ const userRouter = require('./Routes/userRoutes');
 const notesRouter = require('./Routes/notesRoutes');
 const taskRouter = require('./Routes/taskRoutes');
 const projectRoutes = require('./Routes/projectRoutes');
-const trackRoutes = require('./Routes/trackRoutes');
+const eventRoutes = require('./Routes/eventRoutes');
+const projectSubtaskRouter =  require('./Routes/ProjectSubtasksRoutes')
 // mongoose API for MongoDB
 
 const app = express();
@@ -22,7 +23,8 @@ app.use('/users',userRouter);
 app.use('/notes',notesRouter);
 app.use('/tasks',taskRouter);
 app.use('/projects',projectRoutes);
-app.use('/track',trackRoutes);
+app.use('/project/subtasks',projectSubtaskRouter)
+app.use('/track',eventRoutes);
 
 mongoose.connect('mongodb+srv://TaskerDB0863:AltairTaskerDB23@takserappcluster0863.jzoy9pb.mongodb.net/?retryWrites=true&w=majority')
 .then(()=>{

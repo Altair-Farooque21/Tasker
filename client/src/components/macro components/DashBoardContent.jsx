@@ -4,7 +4,7 @@ import person1 from "../../assets/person2.jpg";
 import projects from "../../assets/projects.png";
 import notes from "../../assets/sticky-note.png";
 import bell from "../../assets/notibell.png";
-import TasksDashboad from './Tasks/TasksDashboad';
+import ProjectDashboad from './Projects/ProjectsDashboad';
 import NotesDashboard from './Notes/NotesDashboard';
 import Profile from '../Profile';
 import DashboardTrack from './DashboardTrack';
@@ -32,15 +32,15 @@ function DashBoardContent() {
              </div>
              <div className={css.tasksContainer}>
                  {/* here goes the minimal card components */}
-                 <TasksDashboad />
-                 <TasksDashboad />
-                 <TasksDashboad />
-                 <TasksDashboad />
-                 <TasksDashboad />
-                 <TasksDashboad />
-                 <TasksDashboad />
-                 <TasksDashboad />
-                 <TasksDashboad />
+                 <ProjectDashboad />
+                 <ProjectDashboad />
+                 <ProjectDashboad />
+                 <ProjectDashboad />
+                 <ProjectDashboad />
+                 <ProjectDashboad />
+                 <ProjectDashboad />
+                 <ProjectDashboad />
+                 <ProjectDashboad />
              </div>
         </div>
 

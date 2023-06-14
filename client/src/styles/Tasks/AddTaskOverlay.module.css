@@ -6,251 +6,197 @@
     --bg-container: #f4f4f4;
 }
 
-
-.addTapWrapper{
-    width: 80%;
-    height: 95%;
-    display: flex;
-    align-items:center;
-    justify-content: center;
-    background-color: white;
-    border-radius: 12px;
-    transition: all 0.2s ease-out;
-    position: relative;
-}
-
-.leftContainer{
-    width: 50%;
+.container{
+    width: 28vw;
     height: 90%;
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    row-gap: 4rem;
+    position: relative;
 }
 
-.titleWrap{
+.Wrapper{
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.addTitleWrap {
+    width: 80%;
+    height: 11vh;
+    position: relative;
+    top: 3rem;
+}
+
+.viewTitleWrap{
+    width: 70%;
+    position: relative;
+    top: 3rem;
+    left: -1.5rem;
+}
+.addDescription  {
+    width: 80%;
+    height: 11vh;
+    position: relative;
+    top: 3.5rem;
+}
+.viewDescription {
+    width: 70%;
+    position: relative;
+    top: 3rem;
+    left: -1.5rem;
 }
 .title{
-    font-size: 18px;
-    font-weight: 550;
-    position: relative;
-    margin-bottom: 1.25rem;
-}
-
-.titleInput{
-    width: 18vw;
-    height: 5vh;
-    border-radius: 12px;
-    border: none;
-    background-color: #EFEFEF;
-    padding-left: 1rem;
-}
-
-.titleInput:focus{
-    outline: none !important;
-}
-
-.descWrap{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-}
-.descWrap textarea{
-    resize: none;
-}
-.desc{
-    font-size: 18px;
-    font-weight: 550;
-    position: relative;
-    margin-bottom: 1.25rem;
-}
-
-.descInput{
-    width: 18vw;
-    height: 14vh;
-    border-radius: 12px;
-    border: none;
-    background-color: #EFEFEF;
-    padding: 1rem 1rem;
     font-size: 14px;
+    font-weight: 530;
+    color: rgb(106, 106, 106);
 }
-.descInput:focus{
-    outline: none !important;
-}
-
-.rightContainer{
-    width: 50%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    row-gap: 3rem;
-}
-
-.teamsWrap{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-}
-.teams{
-    font-size: 18px;
-    font-weight: 550;
-    position: relative;
-    margin-bottom: 1rem;
-}
-.teams span{
+.addDescription p span ,.startWrapper p span,.dueWrapper p span{
     font-size: 13px;
-    color: #a5a5a5;
+    font-weight: 450;
+    color: rgb(192, 192, 192);
 }
-.teamsWrap input{
-    width: 18vw;
-    height: 5vh;
-    border-radius: 12px;
+.addTitleWrap input ,.addDescription input{
+    height: 4.5vh;
+    width: 90%;
+    background-color: #efefef;
     border: none;
-    background-color: #EFEFEF;
-    padding-left: 1rem;
-}
-.teamsWrap input:focus{
-    outline: none !important;
-}
-.teamTip{
-    font-size: 12px;
-    font-weight: 500;
-    color: #a5a5a5;
-    width: 18vw;
-    margin: 10px 8px;
-}
-
-.startWrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 18vw;
-}
-
-.start{
-    font-size: 18px;
-    font-weight: 550;
-    position: relative;
-    margin-bottom: 1rem;
-}
-.startWrapper input{
-    width: 12vw;
-    height: 5vh;
-    padding: 0rem 1rem;
-    font-size: 15px;
-    font-weight: 500;
-    border-radius: 8px;
-    border: none;
-    background-color: #EEE1FF;
-    color: #8F43EE;
-}
-
-.startWrapper input:focus{
-    outline: none !important;
-}
-
-
-
-.dueWrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 18vw;
-}
-
-.due{
-    font-size: 18px;
-    font-weight: 550;
-    position: relative;
-    margin-bottom: 1rem;
-}
-.dueWrapper input{
-    width: 12vw;
-    height: 5vh;
-    padding: 0rem 1rem;
-    font-size: 15px;
-    font-weight: 500;
-    border-radius: 8px;
-    border: none;
-    background-color: #EEE1FF;
-    color: #8F43EE;
-}
-
-.dueWrapper input:focus{
-    outline: none !important;
-}
-.priorWrap{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 18vw;
-}
-
-.priority{
-    font-size: 18px;
-    font-weight: 550;
-    position: relative;
-    margin-bottom: 1rem;
-}
-.priority span{
-    font-size: 13px;
-    color: #a5a5a5;
-}
-
-.priorSelectWrap{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.priorSelectWrap select{
-    width: 8vw;
-    height: 4vh;
-    padding: 0rem 1rem;
-    font-size: 14px;
-    font-weight: 550;
-}
-.priorSelectWrap select:focus{
-    outline: none !important;
-}
-
-.priorSelectWrap select option{
-    width: 8vw;
-    height: 4vh;
-    padding: 0rem 1rem;
-    font-size: 14px;
-    font-weight: 550;
-}
-.submitWrap{
-    position: absolute;
-    bottom: 3rem;
-    left: 43%;
-}
-
-.submitWrap button{
-    width: 10vw;
-    height: 5vh;
     border-radius: 10px;
-    background-color: #8F43EE;
-    border: none;
-    color: white;
-    font-weight: 500;
+    padding-left: 1rem;
+    font-size: 14px;
 }
 
-.closeOverlay{
-    position: absolute;
-    top: 3rem;
-    right: 3rem;
+.addTitleWrap input:focus,.addDescription input:focus{
+    outline: none !important;
+}
+
+.timeWrapper{
+    width: 80%;
+    height: 14vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    top: 3.5rem;
+}
+
+.startWrapper input,.dueWrapper input{
+    border: none;
+    width: 10vw;
+    height: 4.5vh;
+    background-color: #e1c8ff;
+    padding: 0rem 1rem;
+    font-size: 14px;
+    border-radius: 8px;
+    font-weight: 450;
     cursor: pointer;
+}
+
+.startWrapper input:focus,.dueWrapper input:focus{
+    outline: none !important;
+}
+
+.taskWrapper{
+    width: 80%;
+    position: relative;
+    max-height: 30vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    position: relative;
+    top: 3.5rem;
+}
+.taskWrapper::-webkit-scrollbar{
+    width: 4px;
+    background-color: #efefef;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #8F43EE;
+}
+.taskLegend{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.taskLegend p{
+    font-size: 16px;
+    font-weight: 530;
+    color: rgb(106, 106, 106);
+}
+
+.addNewTaskBtn{
+    font-size: 14px;
+    font-weight: 530;
+    color: var(--theme);
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+.addNewTaskBtn:hover{
+    text-decoration: underline;
+}
+.actionBtns{
+    width: 80%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    position: absolute;
+    bottom: 2rem;
+}
+.actionBtns button{
+    width: 9vw;
+    height: 4vh;
+    font-size: 13px;
+    font-weight: 530;
+    border-radius: 8px;
+    transition: all 0.25s ease-in-out;
+}
+
+.actionBtns button:hover{
+    cursor: pointer;
+    transform: scale(0.95);
+}
+
+.cancelBtn{
+    background-color: white;
+    border: 1px solid #323232;
+}
+
+.addBtn{
+    background-color: var(--theme);
+    border: 1px solid var(--theme);
+    color: white;
+}
+
+.deleteBtn{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
+}
+/* View styles */
+
+.titleValue{
+    font-size: 20px;
+    font-weight: 530;
+    color: black;
+}
+.descValue{
+    font-size: 14px;
+    font-weight: 430;
+    color: rgb(147, 147, 147);
+}
+.startValue,.dueValue{
+    font-size: 14px;
+    font-weight: 530;
+    color: black;
+}
+
+.close{
+    display: none;
 }

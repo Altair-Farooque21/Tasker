@@ -1,27 +1,23 @@
 const moongose = require('mongoose');
 
-const trackSchema = moongose.Schema({
+const projectSubtasksSchema = moongose.Schema({
 
     // this ID is assigned using User generated ID 
     // now this model belongs to user ID 
-    userID :{
+    projectID :{
         type:moongose.Schema.Types.ObjectId,
         ref: "User",
         required: true
     },
-    event: {
+    title: {
         type:String,
         require: true
     },
-    startDate: {
-        type:String,
-        require: true
-    },
-    endDate: {
+    deadline: {
         type:String,
         require: true
     }
-    
+
 })
 
-module.exports = moongose.model('Track',trackSchema);
+module.exports = moongose.model('ProjectSubtasks',projectSubtasksSchema);

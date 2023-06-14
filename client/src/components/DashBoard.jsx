@@ -4,8 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import css from "../styles/DashBoard.module.css";
 import NavMenuBar from './macro components/NavMenuBar';
 import DashBoardContent from './macro components/DashBoardContent';
-import Checklist from './Checklist';
 import Tasks from './Tasks';
+import Projects from './Projects';
 import Tracks from './Tracks';
 import Notes from './Notes';
 
@@ -17,9 +17,9 @@ function DashBoard() {
         <NavMenuBar />
          <Routes>
             <Route path='/' element={<DashBoardContent />}/>
-            <Route path='/projects' element={<Tasks />}/>
+            <Route path='/projects' element={<Projects />}/>
             <Route path='/notes' element={<Notes />}/>
-            <Route path='/todos' element={<Checklist />}/>
+            <Route path='/todos' element={<Tasks />}/>
             <Route path='/tracks' element={<Tracks />}/>
         </Routes>
     </div>

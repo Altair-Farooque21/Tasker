@@ -8,32 +8,42 @@
 .brand{
     font-size:  20px;
     font-weight: 700;
-    margin-left: 5%;
-    margin: 0 10% 0% 7%;
+    width: 20%;
+    text-align: center;
+    margin: 0;
 }
 .brand span{
     color: var(--brand-color);
 }
 .navbar{
     width: 100%;
-    height: 9vh;
+    height: 10vh;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: none;
 }
 
 .navItems{
-    list-style: none;
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
-    width: 50vw;
-    position: relative;
-    top: 1.1vh;
-    font-weight: 450;
+    justify-content: space-evenly;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+}
+.navItems li{
+    font-weight: 550;
     font-size: 14px;
 }
-
+.navItems li:hover{
+    color:#8F43EE;
+    cursor: pointer;
+}
+.navBarToggler{
+    display: none;
+}
 .signUpBtn{
     width: 7vw;
     height: 4vh;
@@ -49,12 +59,149 @@
     transform: scale(0.97);
 }
 .signUp{
-    width: 20vw;
+    width: 20%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    margin-left: 2rem;
+    padding: 0;
 }
+@media (max-width: 1250px){
+    .heroContainer .heroRightContent{
+        display: none;
+    }
+
+    .heroContainer .heroLeftContent{
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .heroContainer .heroLeftContent .heroLegend ,
+    .heroContainer .heroLeftContent .heroSubtext{
+        left: 0;
+        text-align: center;
+    }
+    .heroContainer .heroLeftContent .heroCTA{
+        left:0;
+        width: 16vw;
+    }
+    .featuresContainer{
+        justify-content: center;
+    }
+    .featuresContainer .featTitle{
+        text-align: center;
+    }
+    .featuresContainer .featuresWrapper .featbanner{
+         transform: scale(0.9);
+    }
+}
+@media (max-width: 768px){
+
+    .heroContainer .heroLeftContent .heroLegend{
+        font-size: 44px;
+    }
+    .heroContainer .heroLeftContent .heroSubtext{
+        font-size: 14px;
+    }
+    .heroContainer .heroLeftContent .heroCTA{
+        width: 30vw;
+    }
+    .featuresContainer .featTitle{
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 600px){
+
+    .heroContainer .heroLeftContent .heroLegend{
+        font-size: 46px;
+    }
+    .heroContainer .heroLeftContent .heroSubtext{
+        font-size: 14px;
+    }
+    .heroContainer .heroLeftContent .heroCTA{
+        width: 30vw;
+    }
+    .featuresContainer .featTitle{
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 450px){
+
+    .heroContainer .heroLeftContent .heroLegend{
+        font-size: 36px;
+    }
+    .heroContainer .heroLeftContent .heroSubtext{
+        width: 90%;
+        font-size: 14px;
+    }
+    .heroContainer .heroLeftContent .heroCTA{
+        width: 40vw;
+    }
+    .featuresContainer .featTitle{
+        text-align: center;
+    }
+    .featuresContainer .featuresWrapper{
+        gap: 5vh;
+    }
+    .featuresContainer .featuresWrapper .feature1Wrap
+    {
+        width: 100%;
+        flex-direction: column;
+    }
+    .featuresContainer .featuresWrapper .feature2Wrap{
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+
+    .featuresContainer .featuresWrapper .feature3Wrap
+    {
+        width: 100%;
+        flex-direction: column;
+    }
+    .featuresContainer .featuresWrapper .feature4Wrap
+    {
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+    .featuresContainer .featuresWrapper .feature5Wrap{
+        width: 100%;
+        flex-direction: column;
+    }
+
+
+    .featuresContainer .featuresWrapper .featbanner{
+        width: 100%;
+    }
+    .featuresContainer .featuresWrapper .featureInfo{
+        width: 100%;
+    }
+
+    .featuresContainer .featuresWrapper .featbanner:nth-child(1) img{
+        width:370px;
+        height: 340px;
+    }
+    .featuresContainer .featuresWrapper .featbanner:nth-child(2) img{
+        width: 100%;
+        height: 100%;
+    }
+    .featuresContainer .featuresWrapper .featbanner:nth-child(3) img{
+        width: 100%;
+        height: 100%;
+    }
+    .featuresContainer .featuresWrapper .featbanner:nth-child(4) img{
+        width: 100%;
+        height: 100%;
+    }
+    .featuresContainer .featuresWrapper .featbanner:nth-child(5) img{
+        width: 100%;
+        height: 100%;
+    }
+    
+}
+
+
+
 
 .heroContainer{
     width: 100vw;
@@ -144,92 +291,60 @@ Hero section done */
     font-size: 36px;
     font-weight: 630;
     color: #181818;
-    margin-bottom: 5vh;
+    margin-bottom: 10vh;
 }
 
-.featuresGrid{
-    display: grid;
+.featuresWrapper{
     width: 100%;
-    height: 100%;
-    grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
-    grid-auto-rows: max-content;
-    justify-items: center; /* Center items horizontally in the grid */
-    align-items: center; /* Center items vertically in the grid */
-    grid-row-gap: 4vh; /* Spacing between rows */
-    column-gap: 4vw;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10vh;
+
+}
+
+.feature1Wrap,
+.feature2Wrap,
+.feature3Wrap,
+.feature4Wrap,
+.feature5Wrap{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .featbanner{
+    width: 50%;
     position: relative;
-    width: 70vh;
-    height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10vh 0vw;
-}
-.feat1Img{
-    position: absolute;
-    left:25%;
-    top: 20%;
-    box-shadow: 4px 4px 16px  #d2baf1;
-    border-radius: 16px;
-}
-.feat1Img0{
-    position: absolute;
-    left:3%;
-    top: 5%;
-    box-shadow: 4px 4px 16px  #d2baf1;
-    border-radius: 10px;
 }
 
-.feat2Img{
-    position: absolute;
-    left:15%;
-    top: 10%;
-    box-shadow: 4px 4px 16px  #d2baf1;
-    border-radius: 16px;
+.featureInfo{
+    width: 50%;
 }
-.feat3Img{
-    position: absolute;
-    left:30%;
-    top: 10%;
-    box-shadow: 4px 4px 20px  #bad2f1;
-    border-radius: 16px;
+
+.featbanner:nth-child(1) img{
+    width:400px;
+    height: 400px;
 }
-.feat3Img0{
-    position: absolute;
-    left:0;
-    top: 0;
-    box-shadow: 4px 4px 20px  #bad2f1;
-    border-radius: 10px;
+.featbanner:nth-child(2) img{
+    width: 512px;
+    height: 512px;
 }
-.feat4Img{
-    position: absolute;
-    left:20%;
-    top: 20%;
-    box-shadow: 4px 4px 32px  #d2baf1;
-    border-radius: 16px;
+.featbanner:nth-child(3) img{
+    width: 400px;
+    height: 400px;
 }
-.feat4Img0{
-    position: absolute;
-    left:0;
-    top: 0;
-    border-radius: 10px;
+.featbanner:nth-child(4) img{
+    width:400px;
+    height: 600px;
 }
-.feat4Img1{
-    position: absolute;
-    right:0;
-    bottom: 0;
-    border-radius: 10px;
-}
-.feat5Img{
-    position: absolute;
-    left:8%;
-    top: 20%;
-    box-shadow: 4px 4px 16px  #857897;
-    border-radius: 16px;
+.featbanner:nth-child(5) img{
+    width:600px;
+    height: 512px;
 }
 
 /* end of the features style */
@@ -410,3 +525,4 @@ Hero section done */
     font-size: 13px;
     color: rgb(191, 191, 191);
 }
+
